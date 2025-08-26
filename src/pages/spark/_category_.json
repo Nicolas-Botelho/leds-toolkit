@@ -1,0 +1,9 @@
+{
+  "label": "Spark",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "
+SPARK is a VScode plugin that enables code generation for a web information system, focused on registrations, through a DSL (Domain-Specific Language). Currently, it generates code in the following languages: Python, Java, and C#."
+  }
+}
