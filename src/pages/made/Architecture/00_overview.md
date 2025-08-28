@@ -11,4 +11,4 @@ The project is split into four main repositories, each with a specific role:
 
 ## Architecture Diagram
 
-![MADE Architecture Diagram](../../../static/img/made-architecture-diagram.png)
+<!-- ![MADE Architecture Diagram](../../../static/img/made-architecture-diagram.png) -->

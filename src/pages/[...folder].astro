@@ -1,0 +1,125 @@
+---
+import path from 'path';
+import fs from 'fs';
+import { headerData } from '~/navigation';
+import FolderMenu from '~/components/FolderMenu.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import type { NavLink } from '~/navigation'
+import { undefined } from 'astro:schema';
+
+const folderParam = Astro.params.folder || '';
+
+let fullFolderPath = path.join('src/pages', folderParam);
+
+if (!fs.existsSync(fullFolderPath) || !fs.statSync(fullFolderPath).isDirectory()) {
+  throw new Error('Pasta não encontrada');
+}
+
+// Breadcrumbs
+const segments = folderParam.split('/').filter(Boolean);
+const breadcrumbs = segments.map((segment, i) => ({
+  text: segment,
+  href: '/' + segments.slice(0, i + 1).join('/'),
+}));
+
+export function getStaticPaths() {
+
+  // for (const link of headerData.links) {
+  //   console.dir(link, {depth : 3})
+  // }
+
+  const paths: { params: { folder : string }}[] = [];
+
+  function walkNavData(links: typeof headerData.links) {
+    for (let link of links) {
+      if (link.href) {
+        paths.push({params: {folder: link.href}})
+      }
+      if (link.links) {
+        walkNavData(link.links)
+      }
+    }
+  }
+
+  walkNavData(headerData.links)
+
+  return paths
+}
+
+function pathReducer(path: typeof breadcrumbs, data: NavLink[]): NavLink[] {
+
+  let newPath = path[path.length - 1]
+
+  let pathingList = newPath.href.split('/')
+  pathingList.shift()
+  let firstLink: NavLink | undefined
+
+  for (let link of data) {
+      if (link.text == pathingList[0]) {
+        pathingList.shift()
+        firstLink = link
+      }
+  }
+  if (firstLink) {
+    let link = linkFinder(pathingList, firstLink)
+    return link?.links ?? [link]
+  }
+  return data
+}
+
+function linkFinder(pathList: string[], data: NavLink): NavLink {
+
+  if (pathList.length != 0 && data.links) {
+    // when the data.link match the path[0], pass that link as data in the recursion and the path.shift()
+    for (let link of data.links) {
+      if (link.text == pathList[0]) {
+        pathList.shift()
+        return linkFinder(pathList, link)
+      }
+    }
+  }
+  // when the path is empty, return the data
+
+  return data
+
+  // if (pathList.length && data.text == pathList[0] && data.links) {
+  //   for (let link of data.links) {
+  //     if (link.text == pathList[0]) {
+  //       pathList.shift()
+  //       let nextLink = link
+
+  //       // console.log(nextLink.text)
+  //       // console.log(pathList)
+
+  //       linkFinder(pathList, nextLink)
+  //     }
+  //   }
+  // }
+  return data;
+}
+
+const reducedData = pathReducer(breadcrumbs, headerData.links)
+
+---
+
+<Layout>
+  <div>
+    <nav>
+      <a href="/">Home</a>
+        {breadcrumbs.map(b => (
+      <> / <a href={b.href}>{b.text}</a></>
+      ))}
+    </nav>
+  </div>
+
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+    <div
+      class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
+    >
+      <slot>
+        <FolderMenu links={reducedData} />
+      </slot>
+    </div>
+  </section>
+
+</Layout>

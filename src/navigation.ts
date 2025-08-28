@@ -3,7 +3,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 import * as fs from "fs";
 import * as path from "path";
 
-type NavLink = {
+export type NavLink = {
   text: string;
   href?: string;
   links?: NavLink[];
@@ -13,7 +13,7 @@ function buildLinks(baseDir: string, currentDir: string = ""): NavLink[] {
   const dirPath = path.join(baseDir, currentDir);
 
   return fs.readdirSync(dirPath)
-  .filter(item => !item.toLowerCase().startsWith("index") && !item.toLowerCase().endsWith(".json"))
+  .filter(item => !item.toLowerCase().startsWith("index") && !item.toLowerCase().startsWith("img") && (item.toLowerCase().endsWith(".md") || !item.toLowerCase().includes('.')))
   .map((item) => {
     const itemPath = path.join(dirPath, item);
     const relPath = path.join(currentDir, item);
@@ -23,6 +23,7 @@ function buildLinks(baseDir: string, currentDir: string = ""): NavLink[] {
       return {
         text: item,
         links: buildLinks(baseDir, relPath),
+        href: getPermalink(`/${relPath.replace(/\\/g, "/").split('.')[0]}`)
       };
     } else {
       return {

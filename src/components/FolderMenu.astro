@@ -1,0 +1,44 @@
+---
+import type { MenuLink } from "./widgets/Header.astro";
+// const { links } = Astro.props as { links: MenuLink[] };
+import type { NavLink } from "~/navigation"
+
+// export let links: MenuLink[] = [];
+export interface Props {
+  links: NavLink[];
+}
+const { links } = Astro.props as Props;
+
+---
+<div>
+  <nav>
+    <ul>
+      {
+      links.map(({text, href, links: sublinks}) => (
+        <li>
+          {
+          href ? (
+            <a href={href} >
+              {text}
+            </a>
+            
+          ) : (
+            <span>{text}</span>
+          )
+        }
+
+        {sublinks?.length ? (
+            <ul>
+              {sublinks.map(s => (
+                <li>
+                  <a href={s.href}> {s.text}</a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </li>
+      ))
+      }
+    </ul>
+  </nav>
+</div>
