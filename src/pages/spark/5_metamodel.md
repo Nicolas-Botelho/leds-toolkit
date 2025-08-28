@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+layout: '~/layouts/MarkdownLayout.astro'
 title: Metamodel
 ---
 

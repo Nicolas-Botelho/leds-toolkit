@@ -1,5 +1,6 @@
 ---
 layout: '~/layouts/MarkdownLayout.astro'
+title: 'LEDS-ToolKit'
 ---
 
 # Visão Geral

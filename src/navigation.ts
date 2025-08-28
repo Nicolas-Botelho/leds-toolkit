@@ -13,7 +13,7 @@ function buildLinks(baseDir: string, currentDir: string = ""): NavLink[] {
   const dirPath = path.join(baseDir, currentDir);
 
   return fs.readdirSync(dirPath)
-  .filter(item => !item.toLowerCase().startsWith("index") && !item.toLowerCase().startsWith("img") && (item.toLowerCase().endsWith(".md") || !item.toLowerCase().includes('.')))
+  .filter(item => !item.toLowerCase().startsWith("index") && !item.toLowerCase().startsWith("img") && (item.toLowerCase().endsWith(".md") || item.toLowerCase().endsWith(".mdx") || !item.toLowerCase().includes('.')))
   .map((item) => {
     const itemPath = path.join(dirPath, item);
     const relPath = path.join(currentDir, item);

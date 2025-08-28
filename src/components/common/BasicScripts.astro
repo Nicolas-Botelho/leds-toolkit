@@ -272,3 +272,23 @@ import { UI } from 'astrowind:config';
     Observer.start();
   });
 </script>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+  // Inicializa o Mermaid
+  mermaid.initialize({ startOnLoad: false });
+
+  // Pega todos os blocos de código mermaid e transforma em pre.mermaid
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("pre > code.language-mermaid").forEach((code) => {
+      const pre = code.parentElement;
+      pre.classList.add("mermaid");
+      // opcional: remover <code> interno para não duplicar
+      pre.textContent = code.textContent;
+    });
+
+    // Executa a renderização
+    mermaid.init(undefined, document.querySelectorAll("pre.mermaid"));
+  });
+</script>
