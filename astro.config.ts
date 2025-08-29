@@ -25,7 +25,7 @@ export default defineConfig({
   output: 'static',
 
   site: "https://Nicolas-Botelho.github.io",
-  base: "leds-toolkit",
+  base: "/leds-toolkit/",
 
 
   integrations: [
