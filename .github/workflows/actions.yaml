@@ -16,11 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v4
-        with:
-          package-manager: npm
-          node-version: 22
+      - name: Install Dependencies
+        run: npm i
 
   deploy:
     needs: build
