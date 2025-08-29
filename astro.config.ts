@@ -27,6 +27,7 @@ export default defineConfig({
   site: "https://Nicolas-Botelho.github.io",
   base: "leds-toolkit",
 
+
   integrations: [
     tailwind({
       applyBaseStyles: false,
