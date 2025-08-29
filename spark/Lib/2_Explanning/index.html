@@ -1,0 +1,24 @@
+<!DOCTYPE html><meta charset="utf-8"><p>To modularize, we copy the folder structure of the backend generators into our lib, in order to remove this part of the processing from within the main program.</p><p>We created this directory structure</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">graph TD</span></span>
+<span class="line"><span style="color:#e1e4e8">  A[packages/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> C[java-generator/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> D[python-generator/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> B[csharp-generator/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> F[Shared/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> G[generators/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  B --> B1[cleanArchitecture-generator/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  B --> B2[minimal-API-generator/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> E[index.ts]</span></span>
+<span class="line"></span></code></pre><p>We created the generators folder to make the calls uniform and in the same directory, this is necessary npm The final use of the lib is in referencing these generators folder</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">graph TD</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">  Packages/ --> C[generators/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  C --> C1[cleanArchitecture-generators/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  C --> C2[minimal-API-generators/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  C --> C3[django.ts]</span></span>
+<span class="line"><span style="color:#e1e4e8">  C --> C4[index.ts]</span></span>
+<span class="line"><span style="color:#e1e4e8">  C --> C5[springboot.ts]</span></span></code></pre><p>The Shared folder was created due to the common need to use files that were also shared in the application within the original Spark structure.</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">graph TD</span></span>
+<span class="line"><span style="color:#e1e4e8">  Shared/ --> D[ast.js]</span></span>
+<span class="line"><span style="color:#e1e4e8">  Shared/ --> A[generator-util.js]</span></span>
+<span class="line"><span style="color:#e1e4e8">  Shared/ --> B[relations.js]</span></span>
+<span class="line"><span style="color:#e1e4e8">  Shared/ --> C[index.ts]</span></span>
+<span class="line"></span></code></pre><p>Index.ts is an extremely important part in the construction of our lib, it is where the logic imports are scaled between folders and referenced at the time of import for use in the source code.</p>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><meta charset="utf-8"><h1 id="django-project-architecture">Django Project Architecture</h1><p>This document describes the backend project structure in <strong>Django</strong>, organized in layers to facilitate maintenance, testability, and component reuse.</p><hr><h2 id="layered-architecture">Layered Architecture</h2><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">    graph TD</span></span>
+<span class="line"><span style="color:#e1e4e8">    A["backend\\backend"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span>
+<span class="line"><span style="color:#e1e4e8">    A --> apps</span></span>
+<span class="line"><span style="color:#e1e4e8">    A --> features</span></span>
+<span class="line"><span style="color:#e1e4e8">    A --> logs</span></span>
+<span class="line"><span style="color:#e1e4e8">    A --> morango</span></span>
+<span class="line"><span style="color:#e1e4e8">    A --> static</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    apps --> moranguinho</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> mig["migrations"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> test</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> admin["admin.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> api_urls["api_urls.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> api_views["api_views.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> apps_py["apps.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> models["models.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> pagination["pagination.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> serializers["serializers.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> signals["signals.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    moranguinho --> utils["utils.py"]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    test --> unit</span></span>
+<span class="line"><span style="color:#e1e4e8">    unit --> agri_test["agricultor_tests.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    unit --> prop_test["propriedade_tests.py"]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    features --> steps</span></span>
+<span class="line"><span style="color:#e1e4e8">    features --> feat1["Moranguinho_Agricultor.feature"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    features --> feat2["Moranguinho_Propriedade.feature"]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    logs --> gitkeep[".gitkeep"]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> media</span></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> settings</span></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> staticfiles</span></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> init_m["__init__.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> asgi["asgi.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> urls["urls.py"]</span></span>
+<span class="line"><span style="color:#e1e4e8">    morango --> wsgi["wsgi.py"]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    static --> init_s["__init__.py"]</span></span>
+<span class="line"></span></code></pre><p>The project follows a modular, domain-driven layered architecture. This structure facilitates the separation of responsibilities, system scalability, and ease of maintenance and testing. Below, we detail each layer and component with examples of their responsibilities.</p><h3 id="domain-layer--appsmoranguinho">Domain Layer — <code>apps/moranguinho/</code></h3><p>This folder represents a Django application specific to a system domain: the management of farmers and properties. Each functionality related to this domain is grouped here, promoting modularity and functional cohesion.</p><h4 id="modelspy--data-models"><code>models.py</code> — Data Models</h4><p>The models represent the core entities of the system, such as <code>Farmer</code> and <code>Property</code>. Each model is linked to a database table, and its attributes reflect the table’s columns. Business rules related to data behavior may also be included here.</p><h4 id="api_viewspy--api-controllers"><code>api_views.py</code> — API Controllers</h4><p>This file contains the interfaces that handle REST API requests. These controllers receive user requests, delegate logic to appropriate layers, and return responses. Examples include listing farmers, creating properties, and updating records.</p><h4 id="serializerspy--serialization-and-validation"><code>serializers.py</code> — Serialization and Validation</h4><p>Serializers convert Python objects into formats like JSON and handle both automatic and custom data validation. They act as an intermediary between database records and user-facing responses.</p><h4 id="paginationpy-utilspy-signalspy--supporting-features"><code>pagination.py</code>, <code>utils.py</code>, <code>signals.py</code> — Supporting Features</h4><ul><li><code>pagination.py</code>: Manages pagination of list views.</li><li><code>utils.py</code>: Contains reusable utility functions (e.g., formatting, calculations).</li><li><code>signals.py</code>: Handles automatic actions triggered by events (e.g., creation of a new farmer).</li></ul><h4 id="test-and-features--testing-layer"><code>test/</code> and <code>features/</code> — Testing Layer</h4><ul><li><code>test/</code>: Contains unit and integration tests for component isolation.</li><li><code>features/</code>: Stores behavior-driven development (BDD) tests using Gherkin to simulate user behavior.</li></ul><h4 id="migrations--database-version-control"><code>migrations/</code> — Database Version Control</h4><p>This folder includes Django migration files that track changes to the database schema over time, enabling safe evolution of the data model.</p><h3 id="global-project-settings--morango">Global Project Settings — <code>morango/</code></h3><p>This directory contains the core configuration files of the Django project.</p><ul><li><code>settings.py</code>: Defines project-wide settings such as database configuration, installed apps, middleware, and REST framework settings.</li><li><code>urls.py</code>: Defines main routes for the API and Django admin panel.</li><li><code>wsgi.py</code> and <code>asgi.py</code>: Handle communication between web servers and the application.</li></ul><hr><h2 id="references">References</h2><ul><li><a href="https://docs.djangoproject.com/en/stable/">Django Official Documentation</a></li><li><a href="https://2023.djangocon.us/talks/decoding-ddd-a-three-tiered-approach-to-django-projects/">Decoding DDD: A Three-Tiered Approach to Django Projects – DjangoCon US</a></li></ul><hr><h2 id="improvement-points">Improvement Points</h2><ul><li><strong>Project with growth potential</strong>: Split the <code>moranguinho</code> app into multiple smaller apps, such as <code>farmers</code>, <code>properties</code>, and <code>reports</code>. Each app would target a specific subdomain, improving maintenance, cohesion, and testability.</li></ul>

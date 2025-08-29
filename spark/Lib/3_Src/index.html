@@ -1,0 +1,10 @@
+<!DOCTYPE html><meta charset="utf-8"><p>With the use of the lib we needed to modify our source code of the spark generators, where all code generation logic was within the source code, with the use of our lib we removed all this part of the product logic and kept only the lib calls we created, keeping only one generator.ts within each respective language.</p><p>This leaves us with the source code structure like this:</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">graph TD</span></span>
+<span class="line"><span style="color:#e1e4e8">  Backend/ --> A[csharp/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  Backend/ --> B[java/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  Backend/ --> C[python/]</span></span>
+<span class="line"><span style="color:#e1e4e8">  </span></span>
+<span class="line"><span style="color:#e1e4e8">  </span></span>
+<span class="line"><span style="color:#e1e4e8">  A --> A1[generator.ts]</span></span>
+<span class="line"><span style="color:#e1e4e8">  B --> B1[generator.ts]</span></span>
+<span class="line"><span style="color:#e1e4e8">  C --> C1[generator.ts]</span></span></code></pre><p>These generators are where spark-generators-lib is called for each language, thus communicating with the generators and index within the lib.</p>

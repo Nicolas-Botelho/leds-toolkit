@@ -1,0 +1,143 @@
+<!DOCTYPE html><meta charset="utf-8"><p>MADE`s language is compose of following parts: Project,Team, Backlog, TimeBox, Roadmap, and Process.</p><h2 id="meta-model">Meta Model</h2><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Model {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Project project</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Team components*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Process components*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Backlog components*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +TimeBox components*</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span>
+<span class="line"><span style="color:#e1e4e8">    class Project {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Team {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Process {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Backlog {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class TimeBox {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Helpers {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Terminals {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Project</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Team</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Process</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Backlog</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> TimeBox</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Helpers</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Terminals</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre><h2 id="project">Project</h2><p>This constructor enables the configuration of the MADE and JIRA integration. A Project is composed of:</p><ul><li>Id: Project Jira`s ID (e.g., DEV, INFRA). Each JIRA project has a ID</li><li>description: a description about the project</li><li>email: user’s email that has permition to create JIRA’s elements using JIRA’s API</li><li>host: jira host (e.g., devxyz.jira.com)</li><li>token: Token that allows to create elements using JIRA’s API.</li></ul><p>Example:</p><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">project  {</span></span>
+<span class="line"><span style="color:#b392f0">    name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Modulo de Autentication, Autorization e Accounting"</span></span>
+<span class="line"><span style="color:#b392f0">    description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Modulo responsável pela autenticação, autorização e rastreio do usuário no sistema"</span></span>
+<span class="line"><span style="color:#b392f0">    startDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">22</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2022</span></span>
+<span class="line"><span style="color:#b392f0">    dueDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2022</span></span>
+<span class="line"><span style="color:#e1e4e8">}</span></span>
+<span class="line"></span></code></pre><h2 id="team">Team</h2><p>It allows us create teams that will be responsible for one or more tasks. MADE allows creating as many teams as we want.</p><p>It is important to comment that each member needs to be registered on JIRA.</p><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">team blackops {</span></span>
+<span class="line"><span style="color:#b392f0">    name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Team Black Ops"</span></span>
+<span class="line"><span style="color:#b392f0">    description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Equipe responsável por produzir artefatos de segurança"</span></span>
+<span class="line"><span style="color:#e1e4e8">    teammember rafaelemerick {</span><span style="color:#b392f0">name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Rafael Emerick"</span><span style="color:#b392f0"> email</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"rafael.emerick@blackops.com.br"</span><span style="color:#e1e4e8">}</span></span>
+<span class="line"><span style="color:#e1e4e8">    teammember joaomarcos {</span><span style="color:#b392f0">name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"João Marcos "</span><span style="color:#b392f0"> email</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"joao.marcos@blackops.com.br"</span><span style="color:#e1e4e8">}</span></span>
+<span class="line"><span style="color:#e1e4e8">    teammember Arthur {</span><span style="color:#b392f0">name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Arthur Cremasco"</span><span style="color:#b392f0"> email</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"arthur.cremasco@blackops.com.br"</span><span style="color:#e1e4e8">}</span></span>
+<span class="line"><span style="color:#e1e4e8">  </span></span>
+<span class="line"><span style="color:#e1e4e8">  </span></span>
+<span class="line"><span style="color:#e1e4e8">}</span></span></code></pre><h2 id="backlog">Backlog</h2><p>It allows us to define a project backlog. MADE allows to creating as many backlogs as we want.</p><p>A backlog is composed of: EPIC, User Story, and Task. Link about <a href="https://scrum-master.org/en/epic-feature-and-user-story-in-agile-a-beginners-guide/">EPIC, USer Story and Task</a>.</p><p>A Epic is composed of User Stories and User Stories is composed of tasks. MADE allows to define this relation. Beside allow us define a relation of dependecies, i.e., It is possible to define that a task will be performed only when other task or user story was performed.</p><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">backlog Spike {</span></span>
+<span class="line"><span style="color:#b392f0">   name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Backlog de Estudo"</span></span>
+<span class="line"><span style="color:#b392f0">   description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Backlog dedicado a estudo da equipe"</span></span>
+<span class="line"><span style="color:#e1e4e8">   </span></span>
+<span class="line"><span style="color:#e1e4e8">   epic epic1 {</span></span>
+<span class="line"><span style="color:#b392f0">    name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudar sobre Autorização"</span></span>
+<span class="line"><span style="color:#b392f0">    description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudo sobre autorização de usuários a recursos de redes"</span></span>
+<span class="line"><span style="color:#e1e4e8">    story story1 {</span></span>
+<span class="line"><span style="color:#b392f0">        name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudar a arquitetura proposta pelo OPA"</span></span>
+<span class="line"><span style="color:#e1e4e8">        task estudar {</span></span>
+<span class="line"><span style="color:#b392f0">            name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudar sobre OPA"</span></span>
+<span class="line"><span style="color:#e1e4e8">            }</span></span>
+<span class="line"><span style="color:#e1e4e8">        task apresentar {</span></span>
+<span class="line"><span style="color:#b392f0">            name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Apresentar o estudo OPA"</span><span style="color:#e1e4e8">  </span></span>
+<span class="line"><span style="color:#b392f0">            depends</span><span style="color:#e1e4e8">: Spike.epic1.story1.estudar, Spike.epic1.story2.estudar                       </span></span>
+<span class="line"><span style="color:#e1e4e8">            }</span></span>
+<span class="line"><span style="color:#e1e4e8">        }</span></span>
+<span class="line"><span style="color:#e1e4e8">        story story2 {</span></span>
+<span class="line"><span style="color:#b392f0">        name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudar a arquitetura proposta pelo OpenFGA"</span></span>
+<span class="line"><span style="color:#e1e4e8">        task estudar {</span></span>
+<span class="line"><span style="color:#b392f0">            name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudar sobre OpenFGA"</span><span style="color:#e1e4e8">            </span></span>
+<span class="line"><span style="color:#e1e4e8">            }</span></span>
+<span class="line"><span style="color:#e1e4e8">        task apresentar {</span></span>
+<span class="line"><span style="color:#b392f0">            name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Apresentar o estudo OpenFGA"</span></span>
+<span class="line"><span style="color:#b392f0">            depends</span><span style="color:#e1e4e8">: Spike.epic1.story1.estudar, Spike.epic1.story2.estudar                       </span></span>
+<span class="line"><span style="color:#e1e4e8">            }</span></span>
+<span class="line"><span style="color:#e1e4e8">        }</span></span>
+<span class="line"><span style="color:#e1e4e8">    }    </span></span>
+<span class="line"><span style="color:#e1e4e8">}</span></span></code></pre><h2 id="sprint">Sprint</h2><p>Define a work period for the project team (e.g., sprint) with work tasks, responsible by time box and other data to manager a timebox.</p><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">sprint estudo {</span></span>
+<span class="line"><span style="color:#b392f0">    name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudar Autorizacao"</span></span>
+<span class="line"><span style="color:#b392f0">    description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Realizar estudos sobre autorizacao"</span></span>
+<span class="line"><span style="color:#b392f0">    startDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">20</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span></span>
+<span class="line"><span style="color:#b392f0">    endDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span></span>
+<span class="line"><span style="color:#b392f0">    status</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">IN_PROGRESS</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span>
+<span class="line"><span style="color:#e1e4e8">    sprintbacklog estudo {</span></span>
+<span class="line"><span style="color:#e1e4e8">        item Spike.epic1.story1.estudar {</span><span style="color:#b392f0">assignee</span><span style="color:#e1e4e8">: blackops.joaomarcos  </span><span style="color:#b392f0">dueDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#b392f0"> status</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">TODO</span><span style="color:#e1e4e8">}</span></span>
+<span class="line"><span style="color:#e1e4e8">        item Spike.epic1.story1.apresentar {</span><span style="color:#b392f0">assignee</span><span style="color:#e1e4e8">: blackops.joaomarcos </span><span style="color:#b392f0">startDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">20</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#b392f0"> completedDate</span><span style="color:#e1e4e8">:</span><span style="color:#79b8ff">26</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#b392f0"> dueDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#b392f0"> status</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">DONE</span><span style="color:#e1e4e8">}         </span></span>
+<span class="line"><span style="color:#e1e4e8">        item Spike.epic1.story2.apresentar {</span><span style="color:#b392f0">assignee</span><span style="color:#e1e4e8">: blackops.joaomarcos </span><span style="color:#b392f0">startDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">20</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#b392f0"> dueDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#b392f0"> status</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">DOING</span><span style="color:#e1e4e8">}         </span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span>
+<span class="line"><span style="color:#e1e4e8">}</span></span></code></pre><p>Definition:</p><ul><li><p><strong>Label</strong>: A label is a tag that can be used to track activities of a specific department, categorizing tasks.</p></li><li><p><strong>Complexity</strong>: Indicates the complexity of items, represented by an integer.</p></li><li><p><strong>Planning</strong>: References items from the backlog, inserting them into the sprint and creating the Sprint Backlog.</p></li><li><p><strong>Performed</strong>: References items from the planning and assigns their status as <code>DOING</code> or <code>DONE</code>. This is useful for sprint reviews, as it allows the status of tasks within the timebox to be checked.</p></li></ul><h2 id="process">Process</h2><p>In projects, it’s common for some activities to be repeated throughout their duration. To handle this, we’ve introduced the concept of a <strong>process</strong>, which can be used to instantiate repetitive activities in the project.</p><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">process DevelopmentProcess {</span></span>
+<span class="line"><span style="color:#b392f0">    name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Development Process"</span></span>
+<span class="line"><span style="color:#b392f0">    description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Description of a process"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    activity UseCaseModelling {</span></span>
+<span class="line"><span style="color:#b392f0">        name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Use Case Modelling"</span></span>
+<span class="line"><span style="color:#b392f0">        description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Use Case Modelling"</span></span>
+<span class="line"><span style="color:#b392f0">        DefinitionDone</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"The criteria that define when the activity is considered complete."</span></span>
+<span class="line"><span style="color:#b392f0">        DefinitionReady</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"The criteria that define when the activity is ready to be worked on."</span></span>
+<span class="line"><span style="color:#b392f0">        Learning</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Specifies what needs to be studied or learned for the activity."</span></span>
+<span class="line"><span style="color:#b392f0">        Label</span><span style="color:#e1e4e8">: UseCaseModelling</span></span>
+<span class="line"><span style="color:#e1e4e8">       </span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    task UseCaseDescription {</span></span>
+<span class="line"><span style="color:#b392f0">        name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Use Case Description"</span></span>
+<span class="line"><span style="color:#b392f0">        description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Use Case Description "</span></span>
+<span class="line"><span style="color:#b392f0">        DefinitionDone</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"The criteria that define when the activity is considered complete."</span></span>
+<span class="line"><span style="color:#b392f0">        DefinitionReady</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"The criteria that define when the activity is ready to be worked on."</span></span>
+<span class="line"><span style="color:#b392f0">        Learning</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Specifies what needs to be studied or learned for the activity."</span></span>
+<span class="line"><span style="color:#b392f0">        Label</span><span style="color:#e1e4e8">: UseCaseDescription</span></span>
+<span class="line"><span style="color:#b392f0">        Depends</span><span style="color:#e1e4e8">: DevelopmentProcess.UseCaseModelling</span></span>
+<span class="line"><span style="color:#e1e4e8">    }    </span></span>
+<span class="line"><span style="color:#e1e4e8">}</span></span></code></pre><p>The dependency can occur in both the <strong>user story</strong> and the <strong>epic</strong>, functioning in the same way.</p><h2 id="roadmap">RoadMap</h2><p>Define o roteiro, suas versões e o planejamento das versões.</p><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">roadmap projeto {</span></span>
+<span class="line"><span style="color:#b392f0">    name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Rodmap do projeto"</span></span>
+<span class="line"><span style="color:#b392f0">    description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Roadmap de todo do projeto"</span></span>
+<span class="line"><span style="color:#e1e4e8">    milestone beta {</span></span>
+<span class="line"><span style="color:#b392f0">        name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Primeira versão"</span></span>
+<span class="line"><span style="color:#b392f0">        description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Contem apenas estudo das tecnologias do projeto"</span></span>
+<span class="line"><span style="color:#b392f0">        startDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">20</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span><span style="color:#e1e4e8">        </span></span>
+<span class="line"><span style="color:#b392f0">        dueDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span></span>
+<span class="line"><span style="color:#b392f0">        status</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">IN_PROGRESS</span></span>
+<span class="line"><span style="color:#e1e4e8">        release beta {</span></span>
+<span class="line"><span style="color:#b392f0">            description</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Estudo para entender as tecnologias"</span></span>
+<span class="line"><span style="color:#b392f0">            item</span><span style="color:#e1e4e8"> : Spike.epic1</span></span>
+<span class="line"><span style="color:#b392f0">            status</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">IN_DEVELOPMENT</span></span>
+<span class="line"><span style="color:#b392f0">            dueDate</span><span style="color:#e1e4e8">: </span><span style="color:#79b8ff">30</span><span style="color:#f97583">/</span><span style="color:#79b8ff">11</span><span style="color:#f97583">/</span><span style="color:#79b8ff">2024</span></span>
+<span class="line"><span style="color:#b392f0">            version</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"1.0"</span></span>
+<span class="line"><span style="color:#e1e4e8">        }</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"><span style="color:#e1e4e8">}</span></span></code></pre><h2 id="examples">Examples:</h2><ul><li><a href="./simple-example-roadmap.made">Simple Example</a>: Example with Team, Sprint, Backlog.</li><li><a href="./simple-example-roadmap.made">Simple Example with Roadmap</a>: Example Team, Sprint, Backlog, and Roadmap.</li></ul>

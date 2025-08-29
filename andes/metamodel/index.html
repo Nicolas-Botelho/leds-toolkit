@@ -1,0 +1,72 @@
+<!DOCTYPE html><meta charset="utf-8"><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    %% Main Classes</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Model {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Project projects*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Requirements requirements*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +UseCase useCases*</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Project {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING purpose</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING miniworld</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Requirements {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Requirement requirements*</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Requirement {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;abstract>></span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING description</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class FunctionalRequirement {</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class NonFunctionalRequirement {</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class UseCase {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +QualifiedName name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING fullName</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Kind kind</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Actor performedActors*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Entity involvedEntities*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +UseCase extendsUseCases*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +UseCase includesUseCases*</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Interfaces</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Actor {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +QualifiedName name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Actor superType</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Entity {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;interface>></span></span>
+<span class="line"><span style="color:#e1e4e8">        +QualifiedName name</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Relationships</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model "1" --> "*" Project : contains</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model "1" --> "*" Requirements : contains</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model "1" --> "*" UseCase : contains</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Requirements "1" --> "*" Requirement : contains</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Requirement &#x3C;|-- FunctionalRequirement</span></span>
+<span class="line"><span style="color:#e1e4e8">    Requirement &#x3C;|-- NonFunctionalRequirement</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    UseCase "1" --> "*" Actor : performed by</span></span>
+<span class="line"><span style="color:#e1e4e8">    UseCase "1" --> "*" UseCase : extends</span></span>
+<span class="line"><span style="color:#e1e4e8">    UseCase "1" --> "*" UseCase : includes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Actor "1" --> "0..1" Actor : extends</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span></code></pre><h2 id="model">Model</h2><ul><li><strong>Description</strong>: The <code>Model</code> serves as the entry point of the grammar. It encapsulates the overall project structure by containing multiple <code>Project</code>, <code>Requirements</code>, and <code>UseCase</code> instances.</li><li><strong>Attributes</strong>:<ul><li><code>projects</code>: A collection of <code>Project</code> instances associated with the model.</li><li><code>requirements</code>: A collection of <code>Requirements</code> instances defining the system’s requirements.</li><li><code>useCases</code>: A collection of <code>UseCase</code> instances representing the system’s use cases.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Contains</strong>:<ul><li>Multiple <code>Project</code> instances.</li><li>Multiple <code>Requirements</code> instances.</li><li>Multiple <code>UseCase</code> instances.</li></ul></li></ul></li></ul><h2 id="project">Project</h2><ul><li><strong>Description</strong>: Represents a project within the model, providing an overview and specific details about the project’s purpose and scope.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the project.</li><li><code>name</code>: The name of the project.</li><li><code>description</code>: A detailed description of the project.</li><li><code>purpose</code>: The primary purpose of the project.</li><li><code>miniworld</code>: A string describing the project’s mini-world or domain context.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Contained By</strong>: Belongs to one <code>Model</code>.</li></ul></li></ul><h2 id="requirements">Requirements</h2><ul><li><strong>Description</strong>: Encapsulates the system’s requirements, categorizing them into functional and non-functional types.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the requirements section.</li><li><code>name</code>: The name of the requirements section.</li><li><code>description</code>: A description outlining the scope of the requirements.</li><li><code>requirements</code>: A collection of <code>Requirement</code> instances detailing individual requirements.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Contains</strong>:<ul><li>Multiple <code>Requirement</code> instances.</li></ul></li></ul></li></ul><h2 id="requirement-abstract-class">Requirement (Abstract Class)</h2><ul><li><strong>Description</strong>: An abstract representation of a system requirement. Serves as a base for more specific requirement types.</li><li><strong>Attributes</strong>:<ul><li><code>name</code>: The name of the requirement.</li><li><code>description</code>: A detailed description of the requirement.</li></ul></li><li><strong>Inheritance</strong>:<ul><li><code>FunctionalRequirement</code> and <code>NonFunctionalRequirement</code> inherit from <code>Requirement</code>.</li></ul></li></ul><h2 id="functionalrequirement">FunctionalRequirement</h2><ul><li><strong>Description</strong>: Represents a functional requirement detailing specific behaviors or functions the system must perform.</li><li><strong>Inheritance</strong>:<ul><li>Inherits from <code>Requirement</code>.</li></ul></li></ul><h2 id="nonfunctionalrequirement">NonFunctionalRequirement</h2><ul><li><strong>Description</strong>: Represents a non-functional requirement specifying system attributes such as performance, security, or usability.</li><li><strong>Inheritance</strong>:<ul><li>Inherits from <code>Requirement</code>.</li></ul></li></ul><h2 id="usecase">UseCase</h2><ul><li><strong>Description</strong>: Represents a use case within the system, defining a specific functionality or behavior that actors can perform.</li><li><strong>Attributes</strong>:<ul><li><code>name</code>: A <code>QualifiedName</code> that uniquely identifies the use case.</li><li><code>fullName</code>: A string representing the full name of the use case.</li><li><code>kind</code>: An enumeration (<code>Kind</code>) indicating the type of use case (<code>manage</code> or <code>view</code>).</li><li><code>performedActors</code>: A collection of <code>Actor</code> instances that perform this use case.</li><li><code>involvedEntities</code>: A collection of <code>Entity</code> instances involved in this use case.</li><li><code>extendsUseCases</code>: A collection of <code>UseCase</code> instances that this use case extends.</li><li><code>includesUseCases</code>: A collection of <code>UseCase</code> instances that this use case includes.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Performed By</strong>:<ul><li>Multiple <code>Actor</code> instances.</li></ul></li><li><strong>Involves</strong>:<ul><li>Multiple <code>Entity</code> instances.</li></ul></li><li><strong>Extends</strong>:<ul><li>Can extend multiple <code>UseCase</code> instances.</li></ul></li><li><strong>Includes</strong>:<ul><li>Can include multiple <code>UseCase</code> instances.</li></ul></li></ul></li></ul><h2 id="actor">Actor</h2><ul><li><strong>Description</strong>: Represents an actor within the system, typically a user or external system that interacts with use cases.</li><li><strong>Attributes</strong>:<ul><li><code>name</code>: A <code>QualifiedName</code> that uniquely identifies the actor.</li><li><code>entity</code>: An <code>Entity</code> that the actor is associated with.</li><li><code>superType</code>: An optional reference to another <code>Actor</code> that this actor extends.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Extends</strong>: An <code>Actor</code> can optionally extend another <code>Actor</code>, establishing an inheritance relationship.</li><li><strong>Implements</strong>: Implements the <code>Entity</code> interface.</li></ul></li></ul>

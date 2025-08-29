@@ -1,0 +1,301 @@
+<!DOCTYPE html><meta charset="utf-8"><p>This metamodel defines the structure of a “Made” system, which consists of several key components used in project management, such as projects, teams, processes, backlogs, and timeboxes. Below is a breakdown of the elements and their relationships:</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Model {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Project project</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Team components*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Process components*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +Backlog components*</span></span>
+<span class="line"><span style="color:#e1e4e8">        +TimeBox components*</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span>
+<span class="line"><span style="color:#e1e4e8">    class Project {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Team {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Process {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Backlog {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class TimeBox {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Helpers {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Terminals {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Project</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Team</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Process</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Backlog</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> TimeBox</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Helpers</span></span>
+<span class="line"><span style="color:#e1e4e8">    Model --> Terminals</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre><h3 id="model-entry-point">Model (Entry Point)</h3><p>The <code>Model</code> serves as the main entry point for the grammar. It consists of one mandatory <code>Project</code> and multiple optional components, which can include teams, processes, backlogs, and timeboxes.</p><h3 id="components">Components</h3><ul><li><strong>Project</strong>: A required element in the <code>Model</code>, representing the central project that the other components relate to. This element is imported from the <code>projects</code> package.</li><li><strong>Team</strong>: Represents teams working within the project. This is an optional component that can be added to the <code>Model</code> and is imported from the <code>team</code> package.</li><li><strong>Process</strong>: Represents processes within the project. Like teams, it is an optional component and is imported from the <code>processes</code> package.</li><li><strong>Backlog</strong>: Refers to the backlog of tasks or issues in the project. It is also optional and is imported from the <code>backlog</code> package.</li><li><strong>TimeBox</strong>: Represents time-based elements like sprints or deadlines. It is an optional component imported from the <code>timebox</code> package.</li></ul><h3 id="supporting-packages">Supporting Packages</h3><p>The model also relies on some supporting packages, including:</p><ul><li><strong>Helpers</strong>: A package for utility or supporting elements.</li><li><strong>Terminals</strong>: Another supporting package, possibly used for defining basic terminal elements in the grammar.</li></ul><h2 id="project">Project</h2><p>The <code>Project</code> class defines the main entity, containing several key attributes:</p><ul><li><strong>name</strong>: A string representing the name of the project.</li><li><strong>email</strong>: A string for the email address associated with the project.</li><li><strong>host</strong>: A string that represents the host where the project is located.</li><li><strong>token</strong>: A string used for authentication or access within the project.</li></ul><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Project {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING email</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING host</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING token</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"><span style="color:#e1e4e8">    </span></span>
+<span class="line"><span style="color:#e1e4e8">    class Identification {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Description {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Project *-- Identification</span></span>
+<span class="line"><span style="color:#e1e4e8">    Project *-- Description</span></span>
+<span class="line"></span></code></pre><p>In addition to these attributes, the <code>Project</code> class is linked to two important components:</p><h3 id="identification-component">Identification Component</h3><p>The <code>Identification</code> component represents a part of the project that is responsible for managing project identification. The details of this component are imported from external sources (<code>terminals</code> or <code>helpers</code>), and it is considered essential for the overall structure of the project.</p><h3 id="description-component">Description Component</h3><p>The <code>Description</code> component handles descriptive information related to the project. Like the <code>Identification</code> component, its details are imported from external sources, making it an integral part of the project structure.</p><h2 id="team">Team</h2><p>This class diagram represents the structure of a Team Management system, focusing on the <code>Team</code> and <code>TeamMember</code> classes. It outlines the attributes of each class and the relationship between them.</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    %% Main Classes</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Team {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class TeamMember {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING email</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Relationships</span></span>
+<span class="line"><span style="color:#e1e4e8">    Team "1" --> "*" TeamMember : has</span></span>
+<span class="line"></span></code></pre><h3 id="team-1">Team</h3><ul><li><strong>Description</strong>: The <code>Team</code> class represents a group of individuals working together on a project or within an organization.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the team.</li><li><code>Name</code>: The name of the team.</li><li><code>Label</code>: A label used for categorizing or tagging the team.</li><li><code>Description</code>: A detailed description of the team’s purpose, goals, or activities.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Has</strong>: Contains multiple <code>TeamMember</code> instances, indicating that a team comprises several members.</li></ul></li></ul><h3 id="teammember">TeamMember</h3><ul><li><strong>Description</strong>: The <code>TeamMember</code> class represents an individual member of a team.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the team member.</li><li><code>name</code>: The name of the team member.</li><li><code>email</code>: The email address of the team member.</li><li><code>Label</code>: A label used for categorizing or tagging the team member (e.g., role, expertise).</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Belongs To</strong>: Part of one <code>Team</code>, indicating that each team member is associated with a specific team.</li></ul></li></ul><h2 id="process">Process</h2><p>This class diagram represents the structure of a Process Management system, encompassing key elements such as <code>Process</code>, <code>Activity</code>, and <code>Task</code>. It also defines how these elements interact and depend on each other within the system.</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    %% Interface for Process Types</span></span>
+<span class="line"><span style="color:#e1e4e8">    class ProcessType {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;interface>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Main Classes</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Process {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Activity {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Task {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Relationships</span></span>
+<span class="line"><span style="color:#e1e4e8">    Process "1" --> "*" Activity : includes</span></span>
+<span class="line"><span style="color:#e1e4e8">    Activity "1" --> "*" Task : includes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Dependencies</span></span>
+<span class="line"><span style="color:#e1e4e8">    Process "*" --> "*" ProcessType : depends on</span></span>
+<span class="line"><span style="color:#e1e4e8">    Activity "*" --> "*" ProcessType : depends on</span></span>
+<span class="line"><span style="color:#e1e4e8">    Task "*" --> "*" ProcessType : depends on</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Inheritance</span></span>
+<span class="line"><span style="color:#e1e4e8">    Process --|> ProcessType</span></span>
+<span class="line"><span style="color:#e1e4e8">    Activity --|> ProcessType</span></span>
+<span class="line"><span style="color:#e1e4e8">    Task --|> ProcessType</span></span>
+<span class="line"></span></code></pre><h3 id="processtype-interface">ProcessType (Interface)</h3><ul><li><strong>Description</strong>: The <code>ProcessType</code> interface serves as a common type for all process-related elements (<code>Process</code>, <code>Activity</code>, and <code>Task</code>). It allows these classes to be referenced polymorphically, enabling dependencies to be established between different types of process elements.</li><li><strong>Note</strong>: Implemented by <code>Process</code>, <code>Activity</code>, and <code>Task</code>.</li></ul><h3 id="process-1">Process</h3><ul><li><strong>Description</strong>: The <code>Process</code> class represents a high-level process within the system. It can include multiple activities and has its own set of attributes that define its characteristics and state.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the process.</li><li><code>Name</code>: The name of the process.</li><li><code>Description</code>: A detailed description of the process.</li><li><code>DefinitionDone</code>: Criteria that define when the process is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the process is ready to begin.</li><li><code>Learning</code>: Learning outcomes or knowledge areas associated with the process.</li><li><code>Label</code>: A label used for categorizing the process.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Includes</strong>: Contains multiple <code>Activity</code> instances, indicating that a process comprises several activities.</li><li><strong>Depends On</strong>: Can depend on multiple <code>ProcessType</code> instances (<code>Process</code>, <code>Activity</code>, <code>Task</code>), allowing for complex interdependencies between different process elements.</li></ul></li></ul><h3 id="activity">Activity</h3><ul><li><strong>Description</strong>: The <code>Activity</code> class represents a specific activity within a process. Activities break down a process into manageable tasks and can include multiple tasks themselves.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the activity.</li><li><code>Name</code>: The name of the activity.</li><li><code>Description</code>: A detailed description of the activity.</li><li><code>DefinitionDone</code>: Criteria that define when the activity is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the activity is ready to begin.</li><li><code>Learning</code>: Learning outcomes or knowledge areas associated with the activity.</li><li><code>Label</code>: A label used for categorizing the activity.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Includes</strong>: Contains multiple <code>Task</code> instances, indicating that an activity comprises several tasks.</li><li><strong>Depends On</strong>: Can depend on multiple <code>ProcessType</code> instances (<code>Process</code>, <code>Activity</code>, <code>Task</code>), allowing for dependencies between different activities and processes.</li></ul></li></ul><h3 id="task">Task</h3><ul><li><strong>Description</strong>: The <code>Task</code> class represents an individual task within an activity. Tasks are the smallest units of work and can depend on other tasks, activities, or processes.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the task.</li><li><code>Name</code>: The name of the task.</li><li><code>Description</code>: A detailed description of the task.</li><li><code>DefinitionDone</code>: Criteria that define when the task is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the task is ready to begin.</li><li><code>Learning</code>: Learning outcomes or knowledge areas associated with the task.</li><li><code>Label</code>: A label used for categorizing the task.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>ProcessType</code> instances (<code>Process</code>, <code>Activity</code>, <code>Task</code>), enabling dependencies between various tasks and other process elements.</li></ul></li></ul><h3 id="interfaces-and-inheritance">Interfaces and Inheritance</h3><h4 id="processtype">ProcessType</h4><ul><li><strong>Description</strong>: An interface that is implemented by <code>Process</code>, <code>Activity</code>, and <code>Task</code>. This allows these classes to be treated uniformly when establishing dependencies, enabling flexible and dynamic relationships within the process management system.</li></ul><h2 id="backlog">Backlog</h2><p>This class diagram represents the structure of a Backlog Management system, encompassing key elements such as <code>Backlog</code>, <code>Epic</code>, <code>AtomicUserStory</code>, and <code>TaskBacklog</code>. Additionally, it integrates external components like <code>Process</code> and <code>Activity</code> to define relationships and dependencies among backlog items.</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    %% Classes principais</span></span>
+<span class="line"><span style="color:#e1e4e8">    class Backlog {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Epic {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING replace</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class AtomicUserStory {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class TaskBacklog {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Process {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Activity {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;import>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Relacionamentos</span></span>
+<span class="line"><span style="color:#e1e4e8">    Backlog "1" --> "*" Epic : contains</span></span>
+<span class="line"><span style="color:#e1e4e8">    Backlog "1" --> "*" AtomicUserStory : contains</span></span>
+<span class="line"><span style="color:#e1e4e8">    Backlog "1" --> "*" TaskBacklog : contains</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Epic "*" --> "*" BacklogItem : depends</span></span>
+<span class="line"><span style="color:#e1e4e8">    Epic "1" --> "1" Process : associated with</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    AtomicUserStory "*" --> "*" BacklogItem : depends</span></span>
+<span class="line"><span style="color:#e1e4e8">    AtomicUserStory "1" --> "1" Epic : part of</span></span>
+<span class="line"><span style="color:#e1e4e8">    AtomicUserStory "1" --> "1" Activity : associated with</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    TaskBacklog "*" --> "*" BacklogItem : depends</span></span>
+<span class="line"><span style="color:#e1e4e8">    TaskBacklog "1" --> "1" AtomicUserStory : part of</span></span>
+<span class="line"><span style="color:#e1e4e8">    TaskBacklog "1" --> "1" TaskBacklog : sub-task of</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Tipos e Herança</span></span>
+<span class="line"><span style="color:#e1e4e8">    class BacklogItem {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;interface>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Epic --|> BacklogItem</span></span>
+<span class="line"><span style="color:#e1e4e8">    AtomicUserStory --|> BacklogItem</span></span>
+<span class="line"><span style="color:#e1e4e8">    TaskBacklog --|> BacklogItem</span></span></code></pre><h3 id="backlog-1">Backlog</h3><ul><li><strong>Description</strong>: The <code>Backlog</code> class serves as the primary container for all backlog items.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the backlog.</li><li><code>Name</code>: The name of the backlog.</li><li><code>Label</code>: A label used for categorizing the backlog.</li><li><code>Description</code>: A detailed description of the backlog.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Contains</strong>: Holds multiple <code>BacklogItem</code> instances, which can be <code>Epic</code>, <code>AtomicUserStory</code>, or <code>TaskBacklog</code>.</li></ul></li></ul><h3 id="epic">Epic</h3><ul><li><strong>Description</strong>: An <code>Epic</code> represents a large body of work that can be broken down into smaller tasks or user stories.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the epic.</li><li><code>Name</code>: The name of the epic.</li><li><code>Description</code>: A description of the epic.</li><li><code>DefinitionDone</code>: Criteria that define when the epic is considered complete.</li><li><code>replace</code>: Indicates if the epic is replacing another item.</li><li><code>DefinitionReady</code>: Criteria that define when the epic is ready to begin.</li><li><code>Label</code>: A label used for categorizing the epic.</li><li><code>Learning</code>: Learning outcomes related to the epic.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>BacklogItem</code> instances.</li><li><strong>Associated With</strong>: Linked to one <code>Process</code>.</li></ul></li></ul><h3 id="atomicuserstory">AtomicUserStory</h3><ul><li><strong>Description</strong>: An <code>AtomicUserStory</code> represents the smallest functional unit within the backlog, typically focused on a user-centered functionality.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the user story.</li><li><code>Name</code>: The name of the user story.</li><li><code>Description</code>: A description of the user story.</li><li><code>DefinitionDone</code>: Criteria that define when the user story is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the user story is ready to begin.</li><li><code>Learning</code>: Learning outcomes related to the user story.</li><li><code>Label</code>: A label used for categorizing the user story.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>BacklogItem</code> instances.</li><li><strong>Part Of</strong>: Belongs to one <code>Epic</code>.</li><li><strong>Associated With</strong>: Linked to one <code>Activity</code>.</li></ul></li></ul><h3 id="taskbacklog">TaskBacklog</h3><ul><li><strong>Description</strong>: The <code>TaskBacklog</code> class represents tasks that need to be completed as part of the project.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the task.</li><li><code>Name</code>: The name of the task.</li><li><code>Description</code>: A description of the task.</li><li><code>DefinitionDone</code>: Criteria that define when the task is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the task is ready to begin.</li><li><code>Learning</code>: Learning outcomes related to the task.</li><li><code>Label</code>: A label used for categorizing the task.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>BacklogItem</code> instances.</li><li><strong>Part Of</strong>: Belongs to one <code>AtomicUserStory</code>.</li><li><strong>Sub-Task Of</strong>: Can be a sub-task of another <code>TaskBacklog</code>.</li></ul></li></ul><h3 id="process-2">Process</h3><ul><li><strong>Description</strong>: Represents processes associated with epics.</li><li><strong>Note</strong>: Imported from an external package.</li></ul><h3 id="activity-1">Activity</h3><ul><li><strong>Description</strong>: Represents activities associated with user stories.</li><li><strong>Note</strong>: Imported from an external package.</li></ul><h3 id="interfaces-and-inheritance-1">Interfaces and Inheritance</h3><h4 id="backlogitem">BacklogItem</h4><ul><li><strong>Description</strong>: An interface implemented by <code>Epic</code>, <code>AtomicUserStory</code>, and <code>TaskBacklog</code>, indicating that these classes are types of backlog items.</li></ul><h2 id="timebox">TimeBox</h2><p>This class diagram provides a comprehensive view of the TimeBox Management metamodel, illustrating how <code>TimeBox</code>, <code>Planning</code>, <code>Performed</code>, <code>PlanningItem</code>, and <code>PerformedItem</code> interact and depend on each other. It integrates with existing components like <code>TeamMember</code>, <code>Epic</code>, <code>AtomicUserStory</code>, and <code>TaskBacklog</code>, enabling structured planning and tracking of tasks within designated time frames. The use of the <code>TimeBoxTask</code> interface facilitates flexible and dynamic dependencies among various task types, ensuring effective project management and progress monitoring.</p><pre class="astro-code github-dark" data-language="mermaid" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">classDiagram</span></span>
+<span class="line"><span style="color:#e1e4e8">    %% Interface for TimeBox Tasks</span></span>
+<span class="line"><span style="color:#e1e4e8">    class TimeBoxTask {</span></span>
+<span class="line"><span style="color:#e1e4e8">        &#x3C;&#x3C;interface>></span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Main Classes</span></span>
+<span class="line"><span style="color:#e1e4e8">    class TimeBox {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING startDate</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING endDate</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING comment</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Planning {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING planningItems</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Performed {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING performedItems</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class PlanningItem {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING itemString</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING assigneeString</span></span>
+<span class="line"><span style="color:#e1e4e8">        +INT planned</span></span>
+<span class="line"><span style="color:#e1e4e8">        +INT complexity</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING dueDate</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class PerformedItem {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING itemString</span></span>
+<span class="line"><span style="color:#e1e4e8">        +INT performed</span></span>
+<span class="line"><span style="color:#e1e4e8">        +INT complexity</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING status</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class TeamMember {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING email</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class Epic {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING replace</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class AtomicUserStory {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    class TaskBacklog {</span></span>
+<span class="line"><span style="color:#e1e4e8">        +ID id</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Name</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Description</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionDone</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING DefinitionReady</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Learning</span></span>
+<span class="line"><span style="color:#e1e4e8">        +STRING Label</span></span>
+<span class="line"><span style="color:#e1e4e8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Relationships</span></span>
+<span class="line"><span style="color:#e1e4e8">    TimeBox "1" --> "1" Planning : has</span></span>
+<span class="line"><span style="color:#e1e4e8">    TimeBox "1" --> "1" Performed : has</span></span>
+<span class="line"><span style="color:#e1e4e8">    TimeBox "1" --> "*" TeamMember : responsible</span></span>
+<span class="line"><span style="color:#e1e4e8">    TimeBox "1" --> "*" PlanningItem : includes</span></span>
+<span class="line"><span style="color:#e1e4e8">    TimeBox "1" --> "*" PerformedItem : includes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    Planning "1" --> "*" PlanningItem : contains</span></span>
+<span class="line"><span style="color:#e1e4e8">    Performed "1" --> "*" PerformedItem : contains</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    PlanningItem --> "0..1" TimeBoxTask : item</span></span>
+<span class="line"><span style="color:#e1e4e8">    PlanningItem --> "0..1" TeamMember : assignee</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    PerformedItem --> "0..1" TimeBoxTask : item</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#e1e4e8">    %% Inheritance</span></span>
+<span class="line"><span style="color:#e1e4e8">    Epic --|> TimeBoxTask</span></span>
+<span class="line"><span style="color:#e1e4e8">    AtomicUserStory --|> TimeBoxTask</span></span>
+<span class="line"><span style="color:#e1e4e8">    TaskBacklog --|> TimeBoxTask</span></span>
+<span class="line"></span></code></pre><h3 id="timebox-1">TimeBox</h3><ul><li><strong>Description</strong>: The <code>TimeBox</code> class represents a fixed period during which specific tasks or activities are planned and performed. It serves as a container for planning and tracking the progress of tasks within the designated time frame.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the TimeBox.</li><li><code>Name</code>: The name of the TimeBox.</li><li><code>Description</code>: A detailed description of the TimeBox.</li><li><code>startDate</code>: The start date of the TimeBox.</li><li><code>endDate</code>: The end date of the TimeBox.</li><li><code>comment</code>: Additional comments or notes related to the TimeBox.</li><li><code>Label</code>: A label used for categorizing the TimeBox.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Has</strong>: Contains one <code>Planning</code> and one <code>Performed</code> instance.</li><li><strong>Responsible</strong>: Assigned to multiple <code>TeamMember</code> instances.</li><li><strong>Includes</strong>: Contains multiple <code>PlanningItem</code> and <code>PerformedItem</code> instances.</li></ul></li></ul><h3 id="planning">Planning</h3><ul><li><strong>Description</strong>: The <code>Planning</code> class encapsulates the planning phase of a TimeBox, where various planning items are defined and organized.</li><li><strong>Attributes</strong>:<ul><li><code>planningItems</code>: A collection of <code>PlanningItem</code> instances associated with the TimeBox.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Contains</strong>: Holds multiple <code>PlanningItem</code> instances.</li></ul></li></ul><h3 id="performed">Performed</h3><ul><li><strong>Description</strong>: The <code>Performed</code> class encapsulates the execution phase of a TimeBox, where performed items are tracked and managed.</li><li><strong>Attributes</strong>:<ul><li><code>performedItems</code>: A collection of <code>PerformedItem</code> instances associated with the TimeBox.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Contains</strong>: Holds multiple <code>PerformedItem</code> instances.</li></ul></li></ul><h3 id="planningitem">PlanningItem</h3><ul><li><strong>Description</strong>: The <code>PlanningItem</code> class represents individual items that are planned within a TimeBox. These items can be tasks, user stories, or epics that need to be addressed during the TimeBox period.</li><li><strong>Attributes</strong>:<ul><li><code>itemString</code>: A string representation of the item, used if a reference is not provided.</li><li><code>assigneeString</code>: A string representation of the assignee’s name, used if a reference is not provided.</li><li><code>planned</code>: An integer indicating the amount of effort planned for the item.</li><li><code>complexity</code>: An integer representing the complexity level of the item.</li><li><code>dueDate</code>: The due date for the planned item.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Item</strong>: References a <code>TimeBoxTask</code> (<code>Epic</code>, <code>AtomicUserStory</code>, or <code>TaskBacklog</code>) or uses a string if no reference is provided.</li><li><strong>Assignee</strong>: References a <code>TeamMember</code> or uses a string if no reference is provided.</li></ul></li></ul><h3 id="performeditem">PerformedItem</h3><ul><li><strong>Description</strong>: The <code>PerformedItem</code> class represents individual items that have been performed or completed within a TimeBox. These items track the actual progress made during the TimeBox period.</li><li><strong>Attributes</strong>:<ul><li><code>itemString</code>: A string representation of the item, used if a reference is not provided.</li><li><code>performed</code>: An integer indicating the amount of effort actually performed on the item.</li><li><code>complexity</code>: An integer representing the complexity level of the item.</li><li><code>status</code>: The current status of the item, which can be either <code>DOING</code> or <code>DONE</code>.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Item</strong>: References a <code>TimeBoxTask</code> (<code>Epic</code>, <code>AtomicUserStory</code>, or <code>TaskBacklog</code>) or uses a string if no reference is provided.</li></ul></li></ul><h3 id="teammember-1">TeamMember</h3><ul><li><strong>Description</strong>: The <code>TeamMember</code> class represents an individual member of a team responsible for executing tasks within a TimeBox.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the team member.</li><li><code>name</code>: The name of the team member.</li><li><code>email</code>: The email address of the team member.</li><li><code>Label</code>: A label used for categorizing or tagging the team member (e.g., role, expertise).</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Responsible For</strong>: Assigned to multiple <code>TimeBox</code> instances.</li><li><strong>Assignee</strong>: Can be assigned to multiple <code>PlanningItem</code> instances.</li></ul></li></ul><h3 id="epic-1">Epic</h3><ul><li><strong>Description</strong>: The <code>Epic</code> class represents a large body of work that can be broken down into smaller tasks or user stories. It is a type of <code>TimeBoxTask</code>.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the epic.</li><li><code>Name</code>: The name of the epic.</li><li><code>Description</code>: A description of the epic.</li><li><code>DefinitionDone</code>: Criteria that define when the epic is considered complete.</li><li><code>replace</code>: Indicates if the epic is replacing another item.</li><li><code>DefinitionReady</code>: Criteria that define when the epic is ready to begin.</li><li><code>Label</code>: A label used for categorizing the epic.</li><li><code>Learning</code>: Learning outcomes related to the epic.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>TimeBoxTask</code> instances.</li><li><strong>Associated With</strong>: Linked to one <code>Process</code>.</li></ul></li></ul><h3 id="atomicuserstory-1">AtomicUserStory</h3><ul><li><strong>Description</strong>: The <code>AtomicUserStory</code> class represents the smallest functional unit within the backlog, typically focused on a user-centered functionality. It is a type of <code>TimeBoxTask</code>.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the user story.</li><li><code>Name</code>: The name of the user story.</li><li><code>Description</code>: A description of the user story.</li><li><code>DefinitionDone</code>: Criteria that define when the user story is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the user story is ready to begin.</li><li><code>Learning</code>: Learning outcomes related to the user story.</li><li><code>Label</code>: A label used for categorizing the user story.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>TimeBoxTask</code> instances.</li><li><strong>Part Of</strong>: Belongs to one <code>Epic</code>.</li><li><strong>Associated With</strong>: Linked to one <code>Activity</code>.</li></ul></li></ul><h3 id="taskbacklog-1">TaskBacklog</h3><ul><li><strong>Description</strong>: The <code>TaskBacklog</code> class represents tasks that need to be completed as part of the project. It is a type of <code>TimeBoxTask</code>.</li><li><strong>Attributes</strong>:<ul><li><code>id</code>: A unique identifier for the task.</li><li><code>Name</code>: The name of the task.</li><li><code>Description</code>: A description of the task.</li><li><code>DefinitionDone</code>: Criteria that define when the task is considered complete.</li><li><code>DefinitionReady</code>: Criteria that define when the task is ready to begin.</li><li><code>Learning</code>: Learning outcomes related to the task.</li><li><code>Label</code>: A label used for categorizing the task.</li></ul></li><li><strong>Relationships</strong>:<ul><li><strong>Depends On</strong>: Can depend on multiple <code>TimeBoxTask</code> instances.</li><li><strong>Part Of</strong>: Belongs to one <code>AtomicUserStory</code>.</li><li><strong>Sub-Task Of</strong>: Can be a sub-task of another <code>TaskBacklog</code>.</li></ul></li></ul><h2 id="interfaces-and-inheritance-2">Interfaces and Inheritance</h2><h3 id="timeboxtask">TimeBoxTask</h3><ul><li><strong>Description</strong>: The <code>TimeBoxTask</code> interface is implemented by <code>Epic</code>, <code>AtomicUserStory</code>, and <code>TaskBacklog</code>. This allows these classes to be treated uniformly when establishing dependencies, enabling flexible and dynamic relationships within the TimeBox Management system.</li></ul>

@@ -1,0 +1,45 @@
+<!DOCTYPE html><meta charset="utf-8"><p>Spark’s language is composed of the following parts: Configuration, Class Diagram, and Use Cases.</p><h2 id="configuration">Configuration</h2><p>This constructor allows you to define:</p><ul><li>Software Name</li><li>Description about the software</li><li>Language desired to develop the information system</li><li>Database name</li></ul><pre class="astro-code github-dark" data-language="js" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#e1e4e8">   Configuration {</span></span>
+<span class="line"><span style="color:#b392f0">       software_name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"SlaveOne"</span><span style="color:#6a737d"> // Software's name</span></span>
+<span class="line"><span style="color:#b392f0">       about</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"Slave One project example"</span><span style="color:#6a737d"> // Description about the software</span></span>
+<span class="line"><span style="color:#b392f0">       language</span><span style="color:#e1e4e8">: python </span><span style="color:#6a737d">// Language and pattern used to develop the software</span></span>
+<span class="line"><span style="color:#b392f0">       database_name</span><span style="color:#e1e4e8">: </span><span style="color:#9ecbff">"SlaveOneDB"</span><span style="color:#6a737d"> // Database Name</span></span>
+<span class="line"><span style="color:#e1e4e8">   }</span></span></code></pre><p>For the <code>language</code>, we have the options: <code>python, java, csharp-minimal-api, csharp-clean-architecture</code>.</p><h2 id="class-diagram">Class Diagram</h2><p>Spark allows you to organize a class diagram into Modules. The declaration of a module follows this pattern:</p><pre class="astro-code github-dark" data-language="plaintext" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span>module Main {</span></span>
+<span class="line"><span>   // Components of the module go here</span></span>
+<span class="line"><span>}</span></span></code></pre><p>Inside each module, it is possible to define Entities, relations between entities, and Enums.</p><pre class="astro-code github-dark" data-language="plaintext" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span>entity Project {</span></span>
+<span class="line"><span>   name: string</span></span>
+<span class="line"><span>   start_date: date</span></span>
+<span class="line"><span>   end_date: date</span></span>
+<span class="line"><span>   budget: decimal</span></span>
+<span class="line"><span>   client: string</span></span>
+<span class="line"><span>   sponsor: string</span></span>
+<span class="line"><span>   goal: string</span></span>
+<span class="line"><span>   project_father OneToMany Project</span></span>
+<span class="line"><span>   time OneToMany Time</span></span>
+<span class="line"><span>   status uses Status</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>enum Status {</span></span>
+<span class="line"><span>   Ativo</span></span>
+<span class="line"><span>   Cancelado</span></span>
+<span class="line"><span>   Entregue</span></span>
+<span class="line"><span>}</span></span></code></pre><h2 id="attribute-and-relationship-types">Attribute and Relationship Types</h2><p>Entities have attributes, and the available types are: <code>string, integer, decimal, datetime, date, boolean, uuid, email, cpf, cnpj, zipcode, currency, mobilePhoneNumber, phoneNumber, file, void</code>.</p><p>Spark allows the following relationships:</p><ul><li><code>OneToOne</code></li><li><code>OneToMany</code></li><li><code>ManyToOne</code></li><li><code>ManyToMany</code></li></ul><h2 id="use-cases">Use Cases</h2><p>Spark provides comprehensive support for modeling use cases, allowing the definition of actors, events, and relationships between use cases.</p><h3 id="defining-actors">Defining Actors</h3><p>Actors represent entities or roles interacting with the system. An actor can optionally extend another actor and include attributes like <code>name</code>.</p><pre class="astro-code github-dark" data-language="plaintext" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span>actor ProjectManager name: "Project Manager"</span></span>
+<span class="line"><span>actor TeamMember name: "Team Member"</span></span></code></pre><h3 id="defining-use-cases">Defining Use Cases</h3><p>A use case describes a functionality of the system. It can include actors, events, descriptions, and inheritance from other use cases.</p><pre class="astro-code github-dark" data-language="plaintext" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span>usecase ManageProjects extends BaseUseCase {</span></span>
+<span class="line"><span>    name: "Manage Projects"</span></span>
+<span class="line"><span>    description: "Handles project management functionalities"</span></span>
+<span class="line"><span>    performer: ProjectManager, TeamMember</span></span>
+<span class="line"><span>    event CreateProject {</span></span>
+<span class="line"><span>        name: "Create a Project"</span></span>
+<span class="line"><span>        description: "Allows the creation of a new project"</span></span>
+<span class="line"><span>        action: "Create"</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    event AssignTask {</span></span>
+<span class="line"><span>        name: "Assign a Task"</span></span>
+<span class="line"><span>        description: "Assigns tasks to team members"</span></span>
+<span class="line"><span>        action: "Assign"</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><h3 id="defining-events">Defining Events</h3><p>Events are integral components of a use case. They represent actions or operations, with optional dependencies on other events.</p><pre class="astro-code github-dark" data-language="plaintext" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span>event CreateProject {</span></span>
+<span class="line"><span>    name: "Create a Project"</span></span>
+<span class="line"><span>    description: "Initiates the creation of a project"</span></span>
+<span class="line"><span>    action: "Create"</span></span>
+<span class="line"><span>    depend: AssignTask</span></span>
+<span class="line"><span>}</span></span></code></pre><p>Where:</p><ul><li><strong>Actors</strong> are the performers of the use case.</li><li><strong>Use Cases</strong> define the system’s functionality.</li><li><strong>Events</strong> represent discrete operations within a use case.</li></ul>
