@@ -16,11 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v4
-        # with:
-        #   package-manager: pnpm@latest   # ou npm, yarn, bun (opcional)
-        #   node-version: 22               # opcional
+      - name: Install Dependencies
+        run: npm i
 
   deploy:
     needs: build
