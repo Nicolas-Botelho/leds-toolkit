@@ -1,5 +1,6 @@
 ---
 layout: '~/layouts/MarkdownLayout.astro'
+title: 'Overview'
 ---
 
 Spark allows to develope a information system on the following languagens, Architecture, and frameworks:

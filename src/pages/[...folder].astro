@@ -8,6 +8,7 @@ import type { NavLink } from '~/navigation'
 
 const folderParam = Astro.params.folder || '';
 
+
 let fullFolderPath = path.join('src/pages', folderParam);
 
 if (!fs.existsSync(fullFolderPath) || !fs.statSync(fullFolderPath).isDirectory()) {
@@ -27,22 +28,42 @@ export function getStaticPaths() {
   //   console.dir(link, {depth : 3})
   // }
 
-  const paths: { params: { folder : string }}[] = [];
+  // const paths: { params: { folder : string }}[] = [];
 
-  function walkNavData(links: typeof headerData.links) {
-    for (let link of links) {
-      if (link.href) {
-        paths.push({params: {folder: link.href}})
-      }
-      if (link.links) {
-        walkNavData(link.links)
-      }
-    }
-  }
+  // function walkNavData(links: typeof headerData.links) {
+  //   for (let link of links) {
+  //     if (link.href) {
+  //       paths.push({params: {folder: link.href}})
+  //     }
+  //     if (link.links) {
+  //       walkNavData(link.links)
+  //     }
+  //   }
+  // }
 
-  walkNavData(headerData.links)
+  // walkNavData(headerData.links)
 
-  return paths
+  return [
+    { params: { folder: 'andes' }},
+    { params: {folder: 'code_wise' }},
+    { params: {folder: 'made'}},
+    { params: {folder: 'made/Architecture' }},
+    { params: {folder: 'oraculo' }},
+    { params: {folder: 'oraculo/metrics' }},
+    { params: {folder: 'spark' }},
+    { params: {folder: 'spark/Architecture' }},
+    { params: {folder: 'spark/Architecture/Generated_Code_Architecture' }},
+    { params: {folder: 'spark/Architecture/Generated_Code_Architecture/backend' }},
+    { params: {folder: 'spark/Architecture/Generated_Code_Architecture/frontend' }},
+    { params: {folder: 'spark/Architecture/Src_Folder_Achitecture' }},
+    { params: {folder: 'spark/Creational-Patterns' }},
+    { params: {folder: 'spark/Lib' }},
+    { params: {folder: 'spark/Team Management' }},
+    { params: {folder: 'spark/Team Management/Communication Plan' }},
+    { params: {folder: 'spark/Team Management/DISC' }},
+    { params: {folder: 'spark/Team Management/Team Topology' }},
+    { params: {folder: 'test_ai' }},
+  ]
 }
 
 function pathReducer(path: typeof breadcrumbs, data: NavLink[]): NavLink[] {
@@ -80,21 +101,6 @@ function linkFinder(pathList: string[], data: NavLink): NavLink {
   // when the path is empty, return the data
 
   return data
-
-  // if (pathList.length && data.text == pathList[0] && data.links) {
-  //   for (let link of data.links) {
-  //     if (link.text == pathList[0]) {
-  //       pathList.shift()
-  //       let nextLink = link
-
-  //       // console.log(nextLink.text)
-  //       // console.log(pathList)
-
-  //       linkFinder(pathList, nextLink)
-  //     }
-  //   }
-  // }
-  return data;
 }
 
 const reducedData = pathReducer(breadcrumbs, headerData.links)

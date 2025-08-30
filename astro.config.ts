@@ -24,7 +24,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   output: 'static',
 
-  site: "https://Nicolas-Botelho.github.io",
+  site: "https://nicolas-botelho.github.io",
   base: "/leds-toolkit/",
 
 
