@@ -24,46 +24,48 @@ const breadcrumbs = segments.map((segment, i) => ({
 
 export function getStaticPaths() {
 
-  // for (const link of headerData.links) {
-  //   console.dir(link, {depth : 3})
-  // }
+  for (const link of headerData.links) {
+    console.dir(link, {depth : 3})
+  }
 
-  // const paths: { params: { folder : string }}[] = [];
+  const paths: { params: { folder : string }}[] = [];
 
-  // function walkNavData(links: typeof headerData.links) {
-  //   for (let link of links) {
-  //     if (link.href) {
-  //       paths.push({params: {folder: link.href}})
-  //     }
-  //     if (link.links) {
-  //       walkNavData(link.links)
-  //     }
-  //   }
-  // }
+  function walkNavData(links: typeof headerData.links) {
+    for (let link of links) {
+      if (link.href) {
+        paths.push({params: {folder: link.href}})
+      }
+      if (link.links) {
+        walkNavData(link.links)
+      }
+    }
+  }
 
-  // walkNavData(headerData.links)
+  walkNavData(headerData.links)
 
-  return [
-    { params: { folder: 'andes' }},
-    { params: {folder: 'code_wise' }},
-    { params: {folder: 'made'}},
-    { params: {folder: 'made/Architecture' }},
-    { params: {folder: 'oraculo' }},
-    { params: {folder: 'oraculo/metrics' }},
-    { params: {folder: 'spark' }},
-    { params: {folder: 'spark/Architecture' }},
-    { params: {folder: 'spark/Architecture/Generated_Code_Architecture' }},
-    { params: {folder: 'spark/Architecture/Generated_Code_Architecture/backend' }},
-    { params: {folder: 'spark/Architecture/Generated_Code_Architecture/frontend' }},
-    { params: {folder: 'spark/Architecture/Src_Folder_Achitecture' }},
-    { params: {folder: 'spark/Creational-Patterns' }},
-    { params: {folder: 'spark/Lib' }},
-    { params: {folder: 'spark/Team Management' }},
-    { params: {folder: 'spark/Team Management/Communication Plan' }},
-    { params: {folder: 'spark/Team Management/DISC' }},
-    { params: {folder: 'spark/Team Management/Team Topology' }},
-    { params: {folder: 'test_ai' }},
-  ]
+  return paths
+
+  // return [
+  //   { params: { folder: 'andes' }},
+  //   { params: {folder: 'code_wise' }},
+  //   { params: {folder: 'made'}},
+  //   { params: {folder: 'made/Architecture' }},
+  //   { params: {folder: 'oraculo' }},
+  //   { params: {folder: 'oraculo/metrics' }},
+  //   { params: {folder: 'spark' }},
+  //   { params: {folder: 'spark/Architecture' }},
+  //   { params: {folder: 'spark/Architecture/Generated_Code_Architecture' }},
+  //   { params: {folder: 'spark/Architecture/Generated_Code_Architecture/backend' }},
+  //   { params: {folder: 'spark/Architecture/Generated_Code_Architecture/frontend' }},
+  //   { params: {folder: 'spark/Architecture/Src_Folder_Achitecture' }},
+  //   { params: {folder: 'spark/Creational-Patterns' }},
+  //   { params: {folder: 'spark/Lib' }},
+  //   { params: {folder: 'spark/Team Management' }},
+  //   { params: {folder: 'spark/Team Management/Communication Plan' }},
+  //   { params: {folder: 'spark/Team Management/DISC' }},
+  //   { params: {folder: 'spark/Team Management/Team Topology' }},
+  //   { params: {folder: 'test_ai' }},
+  // ]
 }
 
 function pathReducer(path: typeof breadcrumbs, data: NavLink[]): NavLink[] {

@@ -1,7 +1,6 @@
 site:
   name: LEDS-ToolKit
   site: 'https://nicolas-botelho.github.io'
-  # base: '/leds-toolkit/'
   base: '/'
   trailingSlash: false
 

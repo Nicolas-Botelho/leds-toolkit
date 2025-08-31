@@ -1,0 +1,25 @@
+---
+sidebar_position: 3
+title: The Documentation Folder
+---
+
+# Generated Documentation
+In addition to generate the code, Spark can automatically generate basic documentation for the modules and classes defined in a Spark file.
+
+## Generated Hierarchy
+### Package Diagram
+- A PlantUML file named packagediagram.puml is generated, containing all packages in the Spark file; and
+- A corresponding Markdown file is also created, which embeds the package diagram and lists all of it's packages.
+
+### Packages
+For each package (also referred to as a module), Spark creates a dedicated folder.
+Each folder contains:
+- classdiagram.puml: a PlantUML file describing the classes within the package, including their attributes and relationships.
+- A Markdown file documenting the classes in the package, similar in structure to the package diagram file.
+
+## Terminology Note
+In the documentation, the terms packages and classes are used.
+However, in Spark grammar these are referred to as modules and entities, respectively.
+In other words:
+- *Package = Module*  
+- *Class = Entity*

@@ -1,0 +1,8 @@
+{
+  "label": "New Documentation",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Supports a Systems Analyst in describing requirements, use cases, events, and other elements of systems analysis."
+  }
+}

@@ -1,0 +1,24 @@
+@startuml Moranguinho
+
+    class Agricultor {
+    string: nome
+    cpf: identification
+    email: email_x
+    string: telefone
+    file: foto
+
+    Propriedade: agricultor
+    }
+
+
+    Agricultor "1" -- "0..*" Propriedade : agricultor >
+
+    class Propriedade {
+    string: nome
+    string: distrito
+
+    }
+
+
+
+@enduml

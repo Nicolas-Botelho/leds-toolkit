@@ -1,19 +1,37 @@
 ---
-layout: '~/layouts/MarkdownLayout.astro'
-title: 'Overview'
+sidebar_position: 1
+title: What it Spark?
 ---
 
-Spark allows to develope a information system on the following languagens, Architecture, and frameworks:
+# What is Spark?
 
-* **Back-end**:
+Spark is a tool whose purpose is to automate the generation of web information systems from the specification of the system's domain classes. By creating a ".spark" file, where the domain classes are defined, a compiler interprets and validates the language, generating some computation artifacts.
 
-    1. Python: Creates an API using Model-View-Controle implemented by Django;
-    2. Java: Creates an API using Model-View-Controller implemented by Spring-Boot. 
-    3. .Net: Creates an API using Model-View-Controller using Minimal API or Clean Architecture with CQRS.
-* **Front-end**:
-    1. Vue: create a visual components with Vue.js.
+## Generated Artifacts
 
-Finally, Spark also creates:
+- Backend: a pseudo REST API integrated with the SWAGGER tool in the following technologies (to be selected):
+    - Django Rest Framework + Python, in the Model View Controller architecture;
+    - Spring Boot + Java, in the Model View Controller architecture;
+    - .NET + C#, in the Minimal API and Clean Architecture architectures (to be selected).
 
-* Documentation: Class Diagram Model, using Plant UML, and descroption of models and entities on Markdown.
-* CI/CD: allow create the files that enable a CI/CD on GitLab. 
+- Frontend: a pseudo frontend integrated with the Backend using the technologies Node.js + Vue + Tailwind; with Vite as a testing dependency.
+
+In addition, it also generates domain class diagrams using PlantUML along with texts in Markdown and CI/CD structures in GitLab.
+
+## Core Components
+
+Spark uses a Domain-Specific Language (DSL) that consists of:
+
+- **Configuration**: Configuration and metadata;
+- **Package**: Package Definition;
+- **Etity**: Class Definition;
+- **enum**: Enum Classes Definition; and
+- **types**: Defines types for classes attributes.
+
+## How It Works
+1. Write your project structure in `.spark` files using the DSL; and
+2. Use VS Code extension or CLI to process the files.
+
+## Benefits
+1. Quicker start on big software projects; and
+2. Padronized code structure for backend and frontend code.

@@ -1,0 +1,219 @@
+```plantuml
+@startuml
+package ImportacaoEditais
+{
+    enum TipoDocumento {
+         CarteiraIdentidade
+        CarteiraTrabalhoPrevidenciaSocial
+        CarteiraHabilitacao
+    }
+    enum Sexo {
+         Masculino
+        Feminino
+    }
+    enum EstadoCivil {
+         Solteiro
+        Casado
+        Separado
+        Viuvo
+        Divorciado
+        Outros
+    }
+    enum RegimeCasamento {
+         Nenhum
+        ComunhaoParcial
+        ComunhaoTotal
+        SeparacaoDeBens
+    }
+    enum StatusPreenchimento {
+         Incompleto
+        Completo
+    }
+    enum StatusImportacao {
+         NaoImportado
+        AImportar
+        Importado
+    }
+    class Documento {
+    integer: numero
+    string: uf_orgao_emissor
+    integer: orgao_emissor
+    date: data_emissao
+
+    }
+
+    Documento "1" -- "1" TipoDocumento : documento>
+
+    class Pessoa {
+    string: nome
+    string: cpfstring
+    string: emailstring
+    date: data_nascimento
+    string: nome_mae
+
+    Naturalidade: pessoa
+    Telefone: pessoa
+    Documento: pessoa
+    DadosBancarios: pessoa
+    AlocacaoBolsista: pessoa
+    }
+
+    Pessoa "1" -- "1" EstadoCivil : pessoa>,Pessoa "1" -- "1" RegimeCasamento : pessoa>,Pessoa "1" -- "1" Sexo : pessoa>
+    Pessoa "1" -- "1" Naturalidade : pessoa >
+    Pessoa "1" -- "0..*" Telefone : pessoa >
+    Pessoa "1" -- "0..*" Documento : pessoa >
+    Pessoa "0..*" -- "0..*" Endereco : pessoa >
+    Pessoa "1" -- "0..*" DadosBancarios : pessoa >
+    Pessoa "1" -- "0..*" AlocacaoBolsista : pessoa >
+
+    class Naturalidade {
+    string: cidade
+    string: uf
+
+    }
+
+
+
+    class Telefone {
+    integer: numero
+
+    }
+
+
+
+    class Endereco {
+    string: logradouro
+    string: numero
+    string: complemento
+    string: cep
+    string: bairro
+    string: municipio
+    string: uf_localidade
+
+    }
+
+
+
+    class DadosBancarios {
+    string: conta
+    string: agencia
+
+    Banco: dadosbancarios
+    }
+
+
+
+    class Banco {
+    string: nome
+    integer: codigo
+
+    }
+
+
+
+    class AreaTecnica {
+    string: nome
+    string: descricao
+
+    }
+
+
+
+    class Coordenacao {
+    date: data_inicio
+    date: data_fim
+
+    Pessoa: coordenacao
+    }
+
+
+
+    class Edital {
+    string: nome
+    date: data_criacao
+    boolean: sincronizar
+    date: data_ultima_sincronizacao
+    integer: id_sig_fapes
+
+    AreaTecnica: edital
+    }
+
+    Edital "1" -- "1" StatusImportacao : edital>
+    Edital "1" -- "0..*" AreaTecnica : edital >
+
+    class Projeto {
+    string: nome
+    date: data_inicio
+    date: data_fim_prevista
+    integer: id_sig_fapes
+
+    Coordenacao: projeto
+    PlanejamentoAlocacao: projeto
+    Edital: projeto
+    AlocacaoBolsista: projeto
+    }
+
+    Projeto "1" -- "1" StatusPreenchimento : projeto>
+    Projeto "1" -- "0..*" Coordenacao : projeto >
+    Projeto "1" -- "1" PlanejamentoAlocacao : projeto >
+    Projeto "1" -- "0..*" AlocacaoBolsista : projeto >
+
+    class PlanejamentoAlocacao {
+    date: data
+
+    PlanejamentoNivel: planejamentoalocacao
+    }
+
+
+    PlanejamentoAlocacao "1" -- "0..*" PlanejamentoNivel : planejamentoalocacao >
+
+    class AlocacaoBolsista {
+    date: inicio_atividade
+    date: data_prevista_fim_atividade
+    date: data_fim_atividade
+    date: data_solicitacao_cancelamento
+    string: justificativa_cancelamento
+    integer: qtde_cotas
+    integer: qtde_cotas_pagas
+    string: status
+    integer: id_sig_tapes
+
+    VersaoModalidade: alocacaobolsista
+    }
+
+
+
+    class VersaoModalidade {
+    string: sigla
+    integer: reducao_vinculo
+    date: data_inicio_vigencia
+    date: data_fim_vigencia
+    string: descricao
+
+    }
+
+
+
+    class PlanejamentoNivel {
+    integer: quantidade
+
+    VersaoNivel: planejamentonivel
+    }
+
+
+
+    class VersaoNivel {
+    decimal: valor
+    integer: id_sig_fapes
+
+    }
+
+
+
+    class NivelBolsa {
+    string: sigla
+
+    }
+}
+@enduml
+```

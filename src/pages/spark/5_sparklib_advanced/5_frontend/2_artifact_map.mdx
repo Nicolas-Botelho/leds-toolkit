@@ -1,0 +1,103 @@
+---
+sidebar_position: 2
+title: Artifact Map
+---
+# Artifact Mapper
+
+## Configuration Files (root)
+| Artifact                          | Type                | Description |
+|-----------------------------------|---------------------|-------------|
+| `.browserslistrc`                 | Configuration       | Defines browser support for build/transpilation. |
+| `.editorconfig`                   | Configuration       | Code style rules for editors. |
+| `.env.dev`                        | Configuration       | Environment variables for development. |
+| `.gitignore`                      | Configuration       | Files/folders ignored by Git. |
+| `package.json / package-lock.json`| Dependencies        | Defines project dependencies and scripts. |
+| `tsconfig.*.json`                 | TypeScript Config   | TypeScript compilation settings. |
+| `vite.config.mts`                 | Build Config        | Vite bundler configuration. |
+| `index.html`                      | Base Document       | Main HTML where the Vue app is mounted. |
+| `components.d.ts / env.d.ts`      | Global Typings      | Global TypeScript type definitions. |
+
+---
+
+## public/
+| Artifact         | Type        | Description |
+|------------------|-------------|-------------|
+| `favicon.png`    | Static      | Website favicon. |
+| `assets/images/` | Static      | Public images directly accessible. |
+
+---
+
+## src/
+### Main Files
+| Artifact    | Type      | Description |
+|-------------|-----------|-------------|
+| `App.vue`   | Vue Root  | Root component of the application. |
+| `main.ts`   | Entry     | Application entry point (mounts App and initializes plugins). |
+
+### api/
+| Artifact | Type       | Description |
+|----------|------------|-------------|
+| `*.ts`   | Services   | Interfaces for API access (HTTP requests). |
+
+### assets/
+| Artifact        | Type       | Description |
+|-----------------|------------|-------------|
+| `logo.png/svg`  | Static     | Application logos. |
+| `style.css`     | Stylesheet | Global styles. |
+
+### components/
+| Artifact                   | Type            | Description |
+|-----------------------------|-----------------|-------------|
+| `Card.vue, DataTable.vue…` | UI Reusable     | Generic reusable UI components. |
+| `icons/`                   | UI              | Custom icons. |
+| `sidenav/`                 | UI              | Sidebar navigation components. |
+
+### layouts/
+| Artifact                  | Type        | Description |
+|----------------------------|-------------|-------------|
+| `Default.vue, Plain.vue…` | Layouts     | Page skeletons (layout templates). |
+
+### modules/
+Domain-specific modules (follow the same structure):
+
+| Folder / Artifact | Type           | Description |
+|-------------------|----------------|-------------|
+| `api/`            | Services       | API consumption for the entity. |
+| `controllers/`    | Controllers    | Business/control logic of the entity. |
+| `routes/`         | Navigation     | Routes for the entity. |
+| `types/`          | Types          | Type/interface definitions for the entity. |
+| `views/`          | Views          | Pages for the entity (Create, List). |
+
+### plugins/
+| Artifact         | Type       | Description |
+|------------------|------------|-------------|
+| `pinia.ts`       | Plugin     | State management configuration (Pinia). |
+| `router.ts`      | Plugin     | Router configuration. |
+| `vuetify.ts`     | Plugin     | Vuetify UI framework configuration. |
+| `index.ts`       | Central    | Central export point for plugins. |
+
+### routes/
+| Artifact     | Type    | Description |
+|--------------|---------|-------------|
+| `index.ts`   | Routes  | Global route definitions. |
+
+### stores/
+| Artifact     | Type            | Description |
+|--------------|-----------------|-------------|
+| `auth.ts`    | Global State    | Authentication state management. |
+| `ui.ts`      | Global State    | UI state management (theme, navigation, etc.). |
+
+### types/
+| Artifact  | Type  | Description |
+|-----------|-------|-------------|
+| `ui.ts`   | Types | Global application types. |
+
+### utils/
+| Artifact     | Type       | Description |
+|--------------|------------|-------------|
+| `regras.ts`  | Utility    | Helper functions and business rules. |
+
+### views/
+| Artifact     | Type  | Description |
+|--------------|-------|-------------|
+| `Login.vue`  | Page  | Authentication page. |

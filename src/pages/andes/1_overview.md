@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Overview
 ---
 
-Andes (**An**alysis as Co**de**) is a tool that empowers software Requirements Engineers to define requirements, use cases, and actors, along with their interrelations. From these definitions, Andes generates documentation in Markdown, test cases, and inputs for other ecosystem tools, such as [Made](../made/1_overview.md) and [Spark](../spark/1_overview.md).
+Andes (**An**alysis as Co**de**) is a tool that empowers software Requirements Engineers to define requirements, use cases, and actors, along with their interrelations. From these definitions, Andes generates documentation in Markdown, test cases, and inputs for other ecosystem tools, such as [Made](../made/made_overview.md) and [Spark](../spark/1_overview.md).
 
 ## Features:
 

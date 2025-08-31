@@ -1,0 +1,98 @@
+---
+sidebar_position: 1
+title: Front-end Architecture
+---
+# Front-end Architecture
+
+```
+.
+└── frontend/vue-vite/
+    ├── generate.ts
+    ├── helpers-generator.ts
+    ├── packagelock-generator.ts
+    ├── public/
+    │   └── generate.ts
+    └── src/
+        ├── api/
+        │   └── generate.ts
+        ├── assets/
+        │   └── generate.ts
+        ├── components/
+        │   ├── generate.ts
+        │   ├── icons/
+        │   │   └── generate.ts
+        │   └── sidenav/
+        │       └── generate.ts
+        ├── generate.ts
+        ├── layouts/
+        │   └── generate.ts
+        ├── modules/
+        │   ├── api/
+        │   │   └── generate.ts
+        │   ├── controllers/
+        │   │   └── generate.ts
+        │   ├── generate.ts
+        │   ├── routes/
+        │   │   └── generate.ts
+        │   ├── types/
+        │   │   └── generate.ts
+        │   └── views/
+        │       ├── generateAttributes.ts
+        │       └── generate.ts
+        ├── plugins/
+        │   └── generate.ts
+        ├── routes/
+        │   └── generate.ts
+        ├── stores/
+        │   └── generate.ts
+        ├── types/
+        │   └── generate.ts
+        ├── utils/
+        │   └── generate.ts
+        └── views/
+            └── generate.ts
+```
+## Generators
+The generators, in TypeScript, creates the code, the files and the folders of the frontend.
+
+The generators are organized acordingly with what they create.
+
+The generators on the superiors parts create the structure and call the generators in the level below them. This generators will create a specific part of the code and the respective files and/or will create other folders and call their respective generators.
+
+## Generator's Organization
+### Main Generator
+- Creates the App.vue and configuration files.
+    - Vue's main file.
+    - Calls the router (src/router).
+- Creates the public folder.
+- Creates the src folder.
+
+### frontend/public
+Defines the public assets for the project, like the favicon image, but still nothing really substantial.
+
+### frontend/src
+Folder with multiple subfolders.
+Each subfolder is responsible for part of the frontend components.
+
+
+- **Api:** Defines and manage same API features, like axios, vite token and admin interceptors.
+
+- **Assets:** Defines the main style used in pages (tailwind) and same image files.
+
+- **Components:** Defines the main components, like datatables, cards and sidenavs.
+
+- **Layouts:** Defines the components disposition on the screen.
+
+- **Modules:** Defines the work of mainly generated entitities, proving routes, stores, controllers, API's, views, in order to provides CRUD operations.
+
+- **Plugins:** Imports Vuetify to style the components and define the default theme.
+
+- **Routes:** Defines the routes for homepage, login, etc.
+
+- **Stores:** Makes the user configurations (e.g.: authentication, followers, posts) and manage UI elements, as snackbars.
+
+- **Types:** Defines password validation rules.
+
+- **Utils:** Defines password validation rules.
+
+- **Views:** Defines a simple Login page to aplication.
