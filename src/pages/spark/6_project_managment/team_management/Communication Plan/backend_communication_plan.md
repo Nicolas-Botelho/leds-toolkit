@@ -1,6 +1,7 @@
 ---
 title: Back-end Communication Plan
 authors: {}
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # 🗂️ Comunication Plan – SPARK (Frontend)

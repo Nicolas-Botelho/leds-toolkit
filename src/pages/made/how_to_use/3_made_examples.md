@@ -1,3 +1,8 @@
+---
+title: MADE Example Files
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # MADE Example Files
 
 ## Basic Project Structure

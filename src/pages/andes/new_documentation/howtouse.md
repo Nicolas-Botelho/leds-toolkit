@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: How to use Andes
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ### ANDES VS Code Extension

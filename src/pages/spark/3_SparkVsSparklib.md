@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Tool vs Library Architecture
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 # Tool vs Library Architecture
 

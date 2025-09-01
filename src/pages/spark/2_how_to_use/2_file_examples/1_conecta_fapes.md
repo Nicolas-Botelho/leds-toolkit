@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Conecta Fapes - Spark Example
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # .spark File

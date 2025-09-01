@@ -1,6 +1,7 @@
 ---
 title: Use Example
 sidebar_position: 8
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Use Exemple

@@ -1,3 +1,8 @@
+---
+title: Tool Architecture
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # Tool Architecture
 
 The MADE Tool (`leds-tools-made`) is built as a VS Code extension with CLI support, using Langium for DSL processing.

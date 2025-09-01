@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Improvement Suggestions
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ### Suggestion 1: Support for Local AI Models via Ollama

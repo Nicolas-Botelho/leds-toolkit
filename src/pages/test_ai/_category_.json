@@ -1,8 +1,8 @@
 {
   "label": "Test AI",
-  "position": 4,
+  "position": 3,
   "link": {
     "type": "generated-index",
-    "description": "Tools and Practices to support Test and Quality Assurance"
+    "description": "Tools and Practices to improve Code Review"
   }
 }

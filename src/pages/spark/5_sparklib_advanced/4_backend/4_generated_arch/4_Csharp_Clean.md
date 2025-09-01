@@ -1,3 +1,9 @@
+---
+sidebar_position: 8
+title: Clean Architecture Csharp
+layout: '~/layouts/MarkdownLayout.astro'
+---
+
 # Clean Architecture Csharp
 
 This document describes the backend structure of the Moranguinho project, based on Clean Architecture principles. The modular and layered organization promotes separation of concerns, testability, maintainability, and scalability.

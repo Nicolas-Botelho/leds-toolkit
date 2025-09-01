@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 title: Back-end Team Envolved
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Team DISC Profiles

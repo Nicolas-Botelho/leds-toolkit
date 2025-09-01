@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Back-end Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Back-end Architecture

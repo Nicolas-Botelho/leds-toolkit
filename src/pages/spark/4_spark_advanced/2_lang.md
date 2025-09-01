@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Understanding the Language
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 Spark's language is composed of the following parts: Configuration, Class Diagram, and Use Cases.

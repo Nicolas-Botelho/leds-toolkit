@@ -1,6 +1,7 @@
 ---
 title: Back-end Team Topology
 authors: {}
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## 👥 Team Topology – SPARK

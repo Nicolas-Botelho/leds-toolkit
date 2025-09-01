@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: VS Code Guide
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Using CodeWise in Visual Studio Code

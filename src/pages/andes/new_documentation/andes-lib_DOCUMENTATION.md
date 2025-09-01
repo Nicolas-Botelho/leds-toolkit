@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 title: Andes GPS Project Lib Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Andes Lib - Documentation

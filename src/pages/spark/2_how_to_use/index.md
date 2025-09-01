@@ -1,3 +1,9 @@
+---
+sidebar_position: 5
+title: First Steps
+layout: '~/layouts/MarkdownLayout.astro'
+---
+
 # First Steps
 
 You can use Spark in both, or in VSCode with it pluggin (recommend), or it cli with NodeJs.

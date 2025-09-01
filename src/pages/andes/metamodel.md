@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: Metamodel
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 ```mermaid
 classDiagram

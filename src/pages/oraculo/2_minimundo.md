@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: Mini-World
 description: Presents the project`s scope and problem context.
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 Presents the project`s scope and problem context.

@@ -5,6 +5,7 @@ import { headerData } from '~/navigation';
 import FolderMenu from '~/components/FolderMenu.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import type { NavLink } from '~/navigation'
+import console from 'console';
 
 const folderParam = Astro.params.folder || '';
 
@@ -24,9 +25,9 @@ const breadcrumbs = segments.map((segment, i) => ({
 
 export function getStaticPaths() {
 
-  for (const link of headerData.links) {
-    console.dir(link, {depth : 3})
-  }
+  // for (const link of headerData.links) {
+  //   console.dir(link, {depth : 3})
+  // }
 
   const paths: { params: { folder : string }}[] = [];
 
@@ -44,42 +45,69 @@ export function getStaticPaths() {
   walkNavData(headerData.links)
 
   return paths
-
-  // return [
-  //   { params: { folder: 'andes' }},
-  //   { params: {folder: 'code_wise' }},
-  //   { params: {folder: 'made'}},
-  //   { params: {folder: 'made/Architecture' }},
-  //   { params: {folder: 'oraculo' }},
-  //   { params: {folder: 'oraculo/metrics' }},
-  //   { params: {folder: 'spark' }},
-  //   { params: {folder: 'spark/Architecture' }},
-  //   { params: {folder: 'spark/Architecture/Generated_Code_Architecture' }},
-  //   { params: {folder: 'spark/Architecture/Generated_Code_Architecture/backend' }},
-  //   { params: {folder: 'spark/Architecture/Generated_Code_Architecture/frontend' }},
-  //   { params: {folder: 'spark/Architecture/Src_Folder_Achitecture' }},
-  //   { params: {folder: 'spark/Creational-Patterns' }},
-  //   { params: {folder: 'spark/Lib' }},
-  //   { params: {folder: 'spark/Team Management' }},
-  //   { params: {folder: 'spark/Team Management/Communication Plan' }},
-  //   { params: {folder: 'spark/Team Management/DISC' }},
-  //   { params: {folder: 'spark/Team Management/Team Topology' }},
-  //   { params: {folder: 'test_ai' }},
-  // ]
 }
+
+// export function getStaticPaths() {
+//   return [
+//     { params: {folder: 'andes' }},
+//     { params: {folder: 'andes/new_documentation'}},
+//     { params: {folder: 'code_wise' }},
+//     { params: {folder: 'code_wise/code_wise_extension'}},
+//     { params: {folder: 'code_wise/code_wise_extension/How was building'}},
+//     { params: {folder: 'code_wise/code_wise_lib'}},
+//     { params: {folder: 'made'}},
+//     { params: {folder: 'made/advanced-topics' }},
+//     { params: {folder: 'made/how_to_use' }},
+//     { params: {folder: 'oraculo' }},
+//     { params: {folder: 'oraculo/metrics' }},
+//     { params: {folder: 'spark' }},
+//     { params: {folder: 'spark/2_how_to_use' }},
+//     { params: {folder: 'spark/2_how_to_use/2_file_examples' }},
+//     { params: {folder: 'spark/4_spark_advanced' }},
+//     { params: {folder: 'spark/4_spark_advanced/3_Architecture' }},
+//     { params: {folder: 'spark/4_spark_advanced/3_Architecture/4_src_folder' }},
+//     { params: {folder: 'spark/5_sparklib_advanced' }},
+//     { params: {folder: 'spark/5_sparklib_advanced/4_backend' }},
+//     { params: {folder: 'spark/5_sparklib_advanced/4_backend/4_generated_arch' }},
+//     { params: {folder: 'spark/5_sparklib_advanced/5_frontend' }},
+//     { params: {folder: 'spark/5_sparklib_advanced/5_frontend/3_generated_arch' }},
+//     { params: {folder: 'spark/6_project_manegment' }},
+//     { params: {folder: 'spark/6_project_manegment/future' }},
+//     { params: {folder: 'spark/6_project_manegment/team_management' }},
+//     { params: {folder: 'spark/6_project_manegment/team_management/Communication Plan' }},
+//     { params: {folder: 'spark/6_project_manegment/team_management/DISC' }},
+//     { params: {folder: 'spark/6_project_manegment/team_management/Team Topology' }},
+//     { params: {folder: 'test_ai' }},
+//     { params: {folder: 'todo_list'}},
+//   ]
+// }
 
 function pathReducer(path: typeof breadcrumbs, data: NavLink[]): NavLink[] {
 
   let newPath = path[path.length - 1]
+  console.log(newPath)
+  console.log('---')
+  console.log(path)
+  console.log('---')
 
   let pathingList = newPath.href.split('/')
   pathingList.shift()
+  console.log(pathingList)
+  console.log('---')
+
   let firstLink: NavLink | undefined
 
   for (let link of data) {
-      if (link.text == pathingList[0]) {
+      let pathingListLink = link.href?.split('/') ?? []
+      pathingListLink.shift()
+      let linkHref = pathingListLink[0]
+
+      if (linkHref == pathingList[0]) {
         pathingList.shift()
         firstLink = link
+        console.log(pathingList)
+        console.log(firstLink.href)
+        console.log('---')
       }
   }
   if (firstLink) {
@@ -94,8 +122,19 @@ function linkFinder(pathList: string[], data: NavLink): NavLink {
   if (pathList.length != 0 && data.links) {
     // when the data.link match the path[0], pass that link as data in the recursion and the path.shift()
     for (let link of data.links) {
-      if (link.text == pathList[0]) {
+      let pathingListLink = link.href?.split('/') ?? []
+      pathingListLink.shift()
+      pathingListLink.shift()
+      let linkHref = pathingListLink[0]
+      console.log(linkHref)
+      console.log(pathList[0])
+      console.log('---')
+
+      if (linkHref == pathList[0]) {
         pathList.shift()
+        console.log('---found-it---')
+        console.log(pathList)
+        console.log(linkHref)
         return linkFinder(pathList, link)
       }
     }

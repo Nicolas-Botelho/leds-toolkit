@@ -1,3 +1,8 @@
+---
+title: Tool vs Library Architecture
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # Tool vs Library Architecture
 
 MADE is split into two main components: the **Tool** and the **Library**. Understanding this separation is crucial for developers who want to extend or integrate MADE.

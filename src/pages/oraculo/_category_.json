@@ -1,0 +1,8 @@
+{
+  "label": "Oraculo",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "A pipeline to explain how to use all tools togheter"
+  }
+}

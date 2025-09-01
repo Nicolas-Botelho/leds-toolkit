@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: Architecture and Modularization
 description: The modular architecture of the project.
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # Architecture and Modularization

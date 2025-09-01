@@ -1,3 +1,8 @@
+---
+title: How to Use MADE in VS Code
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # How to Use MADE in VS Code
 
 ## Installation

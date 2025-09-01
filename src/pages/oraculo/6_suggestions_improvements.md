@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
-title: Suggestions for Improvements 
+title: Suggestions for Improvements
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Suggestions for Improvements

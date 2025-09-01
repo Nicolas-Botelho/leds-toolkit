@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Andes Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Overview

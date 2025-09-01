@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Suggestion of Next Features
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 

@@ -1,3 +1,8 @@
+---
+title: How to Contribute
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # How to Contribute
 
 We welcome contributions to make MADE better! This guide outlines how to contribute and suggests key features that would significantly improve the tool.

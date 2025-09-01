@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: How to Use
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 1. Create a file with extension `.andes` (e.g., slave_one.spark)

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Release Plan
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 ## Version 1 for .NET 
 - **Estimated duration:** 2 Weeks

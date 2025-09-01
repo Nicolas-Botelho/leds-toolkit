@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Installation Guide
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Installation Guide 

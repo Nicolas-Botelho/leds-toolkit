@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: Minimal API Csharp
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # C# Minimal API Architecture

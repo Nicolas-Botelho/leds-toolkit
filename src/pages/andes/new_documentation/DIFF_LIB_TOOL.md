@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Andes Tool VS Andes Lib
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Difference between Andes Lib and Andes GPS Project

@@ -2,6 +2,7 @@
 id: 01-Design-of-the-architecture
 title: Design of the Architecture
 sidebar_label: Design of the Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 **MVC ARCHITETURE**

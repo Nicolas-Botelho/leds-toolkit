@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 title: Python Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Django Project Architecture

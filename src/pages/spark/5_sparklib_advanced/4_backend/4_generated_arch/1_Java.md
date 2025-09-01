@@ -2,6 +2,7 @@
 sidebar_position: 8.1
 title: Java Architecture
 parent: Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Java Spark Architecture

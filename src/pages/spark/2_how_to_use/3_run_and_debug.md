@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Running Locally and Debugging
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 This guide walks you through running and debugging your custom language extension locally. You'll prepare the environment, generate code from the grammar, build the project, and launch a debug session in VS Code to test language features in real time.

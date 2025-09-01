@@ -1,3 +1,8 @@
+---
+title: How to Use MADE CLI
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # How to Use MADE CLI
 
 ## Installation

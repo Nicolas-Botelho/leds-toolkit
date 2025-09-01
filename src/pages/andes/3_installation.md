@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Instalation
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 To install Andes, follow these steps:

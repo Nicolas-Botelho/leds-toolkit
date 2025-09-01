@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Metamodel
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 

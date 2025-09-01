@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Mini-World To-Do List
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 Video showing the tool in action: https://drive.google.com/file/d/1UEOB0TPu_5w2-L1Y-MoRSM9j5j_0AvyM/view?usp=sharing

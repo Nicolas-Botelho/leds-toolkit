@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: Andes Lib Architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Overview of the Modules

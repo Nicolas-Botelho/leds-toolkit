@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Writting a File
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # Language Hierarchy

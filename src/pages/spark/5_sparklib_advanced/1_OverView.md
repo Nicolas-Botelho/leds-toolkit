@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Overview
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 **SparkLib** is a code generation library focused on productivity and standardization. Currently, this version supports generating code for:

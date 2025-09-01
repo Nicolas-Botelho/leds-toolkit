@@ -1,3 +1,8 @@
+---
+title: Grammar Tokens
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # Grammar Tokens
 
 The MADE DSL uses Langium grammar to define its syntax. Understanding the grammar structure is essential for developers extending or integrating with MADE.

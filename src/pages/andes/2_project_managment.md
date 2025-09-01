@@ -2,6 +2,7 @@
 sidebar_position: 3
 title: Project Management
 description: Presents the project`s developing planning.
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 Presents the project`s developing planning.

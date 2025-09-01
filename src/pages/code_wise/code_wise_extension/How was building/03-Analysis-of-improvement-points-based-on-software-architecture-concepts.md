@@ -2,6 +2,7 @@
 id: 03-Analysis-of-improvement-points-based-on-software-architecture-concepts
 title: Analysis of improvement points based on software architecture concepts
 sidebar_label: Analysis of improvement points based on software architecture concepts
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Scalability:

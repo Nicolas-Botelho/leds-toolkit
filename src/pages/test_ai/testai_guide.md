@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Getting started
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # How to Run Test.AI

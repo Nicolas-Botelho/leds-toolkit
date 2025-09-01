@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Project Management
 description: Presents the project`s developing planning.
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 Presents the project`s developing planning.
@@ -35,23 +36,5 @@ Presents the project`s developing planning.
   
   * **Deadline I**  01/10/2023: Send Feedback about a code to developer.      
 
-```mermaid
-%%{
-  init: {
-    'logLevel': 'debug',
-    'theme': 'forest',
-    'themeCSS': '.taskText, .taskTextOutsideRight, .taskTextOutsideLeft { font-size: 20px; }'
-  }
-}%%
-timeline
-   
-    Send Feedback about a code to developer  <br> 01/10/2024    : Define prompt to GPT
-                                                                : Send information to discord channel
-                                                                : Send information to Pull Request`s comment
-                                                                : Validate with a developer
-                                                                : Teaching a developers
-
-
-
-```
+[Code Wise Extension](./img/codewise-ext-timeline.svg)
 

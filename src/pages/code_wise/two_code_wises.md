@@ -1,6 +1,7 @@
 ---
 title: Disambiguation
 sidebar_position: 1
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Code Wise Documentation

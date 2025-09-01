@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Spark Compiler Artifact Map
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Spark Compiler Artifact Map

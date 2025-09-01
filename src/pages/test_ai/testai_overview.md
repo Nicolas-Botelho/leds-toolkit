@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Overview
 description: Presents the project`s developing planning.
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 Presents the project`s developing planning.

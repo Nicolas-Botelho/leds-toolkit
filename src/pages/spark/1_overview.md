@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: What it Spark?
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # What is Spark?

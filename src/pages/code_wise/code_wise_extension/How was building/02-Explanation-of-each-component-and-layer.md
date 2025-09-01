@@ -2,6 +2,7 @@
 id: 02-Explanation-of-each-component-and-layer
 title: Explanation of each component and layer
 sidebar_label: Explanation of each component and layer
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 ## Model:

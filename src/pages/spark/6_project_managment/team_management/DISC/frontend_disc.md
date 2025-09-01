@@ -1,6 +1,7 @@
 ---
 title: Front-end DISC
 authors: {}
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Team Member's DISC Personality

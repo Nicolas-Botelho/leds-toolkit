@@ -1,6 +1,7 @@
 ---
 sidebar_position: 0
 title: Anchor
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 This is an Anchor Page. It is used to centralize all links and dependencies.

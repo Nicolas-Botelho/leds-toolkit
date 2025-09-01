@@ -1,2 +1,0 @@
-# DSM:
-![DSM](DSM.png)

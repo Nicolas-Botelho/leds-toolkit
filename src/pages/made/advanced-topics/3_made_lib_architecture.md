@@ -1,3 +1,8 @@
+---
+title: Library Architecture
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # Library Architecture
 
 The MADE Library (`leds-tools-made-lib`) is the core processing engine that handles data transformation, documentation generation, and GitHub integration.

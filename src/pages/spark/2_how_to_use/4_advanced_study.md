@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: An Advanced Study of Grammar
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # A Brief About Grammar

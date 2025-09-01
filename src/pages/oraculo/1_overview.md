@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Overview
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # 🧙 Oráculo: Team wisdom in real time

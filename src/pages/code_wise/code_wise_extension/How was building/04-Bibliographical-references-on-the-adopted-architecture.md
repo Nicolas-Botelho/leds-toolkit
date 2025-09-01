@@ -2,6 +2,7 @@
 id: 04-Bibliographical-references-on-the-adopted-architecture
 title: Bibliographical references on the adopted architecture
 sidebar_label: Bibliographical references on the adopted architecture
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 - Clean Architecture A CRAFTSMAN'S Guide To Software Structure And Design, Robert C. Martin

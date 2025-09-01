@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: Instalation
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 To use this action in your repository, follow the steps below:

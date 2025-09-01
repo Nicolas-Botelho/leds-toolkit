@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: Understanding the Language
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 The **Andes grammar** is used to define documentation components like **Projects**, **Requirements**, **Actor** and **Use Cases**. Below is a detailed description of the Andes grammar.

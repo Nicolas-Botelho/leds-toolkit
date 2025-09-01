@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: TodoList - A Complete Pipeline
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # TodoList - A Complete Pipeline

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: How to use
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 # How to use

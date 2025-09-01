@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Moranguinho - Spark Example
+layout: '~/layouts/MarkdownLayout.astro' 
 ---
 
 In free translate, Litle Strawbery

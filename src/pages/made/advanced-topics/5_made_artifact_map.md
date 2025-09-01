@@ -1,3 +1,8 @@
+---
+title: Artifact Map
+layout: '~/layouts/MarkdownLayout.astro' 
+---
+
 # Artifact Map
 
 This document maps the relationships between MADE components and their generated artifacts across different output formats.
