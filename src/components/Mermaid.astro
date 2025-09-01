@@ -1,0 +1,20 @@
+<script>
+  import mermaid from "mermaid";
+
+  mermaid.initialize({ startOnLoad: true, theme: "default" });
+
+  document.querySelectorAll('pre[data-language="mermaid"]').forEach((block, i) => {
+    const code = block.textContent;
+    const container = document.createElement("div");
+    container.className = "mermaid";
+    if (code !== null) {
+      container.textContent = code;
+    }
+
+    block.replaceWith(container)
+  });
+
+  mermaid.run({
+    querySelector: ".mermaid"
+  });
+</script>

@@ -5,7 +5,6 @@ import { headerData } from '~/navigation';
 import FolderMenu from '~/components/FolderMenu.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import type { NavLink } from '~/navigation'
-import console from 'console';
 
 const folderParam = Astro.params.folder || '';
 
@@ -85,15 +84,9 @@ export function getStaticPaths() {
 function pathReducer(path: typeof breadcrumbs, data: NavLink[]): NavLink[] {
 
   let newPath = path[path.length - 1]
-  console.log(newPath)
-  console.log('---')
-  console.log(path)
-  console.log('---')
 
   let pathingList = newPath.href.split('/')
   pathingList.shift()
-  console.log(pathingList)
-  console.log('---')
 
   let firstLink: NavLink | undefined
 
@@ -105,42 +98,52 @@ function pathReducer(path: typeof breadcrumbs, data: NavLink[]): NavLink[] {
       if (linkHref == pathingList[0]) {
         pathingList.shift()
         firstLink = link
-        console.log(pathingList)
-        console.log(firstLink.href)
-        console.log('---')
       }
   }
+
+  console.log('start')
+  console.log(pathingList)
+  console.log(firstLink?.href)
+  console.log('---')
+
   if (firstLink) {
+    console.log('start_func')
     let link = linkFinder(pathingList, firstLink)
     return link?.links ?? [link]
   }
   return data
 }
 
-function linkFinder(pathList: string[], data: NavLink): NavLink {
+function linkFinder(pathList: string[], data: NavLink, index=2): NavLink {
 
   if (pathList.length != 0 && data.links) {
     // when the data.link match the path[0], pass that link as data in the recursion and the path.shift()
     for (let link of data.links) {
+
       let pathingListLink = link.href?.split('/') ?? []
-      pathingListLink.shift()
-      pathingListLink.shift()
-      let linkHref = pathingListLink[0]
+      let linkHref = pathingListLink[index]
+
+      console.log('iteration')
+      console.log(pathList)
+      console.log(pathingListLink)
       console.log(linkHref)
-      console.log(pathList[0])
       console.log('---')
 
       if (linkHref == pathList[0]) {
         pathList.shift()
-        console.log('---found-it---')
+
+        console.log('found')
         console.log(pathList)
+        console.log(pathingListLink)
         console.log(linkHref)
-        return linkFinder(pathList, link)
+        console.log('---')
+
+        return linkFinder(pathList, link, index+1)
       }
     }
   }
   // when the path is empty, return the data
-
+  console.log('out')
   return data
 }
 

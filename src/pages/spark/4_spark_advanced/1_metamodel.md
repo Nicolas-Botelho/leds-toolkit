@@ -17,20 +17,15 @@ classDiagram
         +AbstractElement abstractElements*
     }
     
-    class Configuration {
-    }
+    class Configuration
     
-    class AbstractElement {
-    }
+    class AbstractElement
     
-    class ModuleImport {
-    }
+    class ModuleImport
     
-    class Actor {
-    }
+    class Actor 
     
-    class UseCase {
-    }
+    class UseCase 
     
     class Module {
         +QualifiedName name
@@ -38,18 +33,15 @@ classDiagram
         +AbstractElement elements*
     }
     
-    class EnumX {
-    }
+    class EnumX 
     
-    class LocalEntity {
-    }
+    class LocalEntity 
     
     class Comment {
         +STRING content
     }
     
-    class QualifiedName {
-    }
+    class QualifiedName 
     
     %% Relationships
     Model "1" --o "0..1" Configuration : has
